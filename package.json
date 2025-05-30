@@ -2,7 +2,7 @@
   "name": "@matechat/react",
   "version": "0.0.0",
   "packageManager": "pnpm@10.10.0",
-  "description": "A starter for creating a React component library.",
+  "description": "Front-end AI scenario solution UI library based on Huawei DevUI Design.",
   "type": "module",
   "license": "MIT",
   "homepage": "https://gitcode.com/DevCloudFE/matechat-react",
@@ -37,14 +37,15 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "format": "biome format . --write",
-    "format:check": "biome format . --check",
     "release": "bumpp && pnpm publish",
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^3.3.0"
+    "tailwind-merge": "^3.3.0",
+    "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -58,7 +59,7 @@
     "happy-dom": "^17.5.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "tsdown": "^0.12.4",
+    "tsdown": "^0.12.5",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
