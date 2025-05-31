@@ -1,5 +1,5 @@
 import { execSync } from "node:child_process";
-import fs from "node:fs";
+import fs, { type WatchEventType } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { type ProgressBar, createSpinner } from "archons";
@@ -32,10 +32,23 @@ function createArchonsSpinner() {
 }
 
 const cwd = process.cwd();
-const dirPath = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "../src",
-);
+const watchMap = new Map<string, string>([
+  [
+    path.join(path.dirname(fileURLToPath(import.meta.url)), "../src"),
+    "pnpm build && pnpm playground:build",
+  ],
+  [
+    path.join(
+      path.dirname(fileURLToPath(import.meta.url)),
+      "../playground/src",
+    ),
+    "pnpm playground:build",
+  ],
+]);
+const displayPaths = Array.from(watchMap.keys())
+  .map((dirPath) => chalk.cyan(path.relative(cwd, dirPath)))
+  .join(", ");
+
 const ignored = [
   "node_modules",
   ".git",
@@ -54,34 +67,46 @@ const greenPrefix = chalk.green("[MateChat]");
 const spinner = createArchonsSpinner();
 spinner.enableSteadyTick(100);
 spinner.setMessage("Initial building...");
-tryBuild("pnpm build", "Building...", spinner);
+for (const cmd of watchMap.values()) {
+  tryBuild(cmd, "Building...", spinner);
+}
 spinner.finishAndClear();
 console.clear();
 console.log(`${greenPrefix} Build complete.\n`);
-console.log(
-  `${greenPrefix} Watching on ${chalk.cyan(path.relative(cwd, dirPath))} for changes...`,
-);
+console.log(`${greenPrefix} Watching on ${displayPaths} for changes...`);
+
+function watch() {
+  function rebuild(
+    command: string,
+    eventType: WatchEventType,
+    filename: string | null,
+  ) {
+    if (Date.now() - lastBuild < 1000) {
+      return;
+    }
+    if (filename && !isIgnored(filename)) {
+      const spinner = createArchonsSpinner();
+      spinner.println(
+        `${greenPrefix} File ${chalk.cyan(filename)} was ${eventType}d, rebuilding...`,
+      );
+      spinner.enableSteadyTick(100);
+      if ([".ts", ".tsx", ".css"].some((ext) => filename.endsWith(ext))) {
+        tryBuild(command, "Rebuilding...", spinner);
+      }
+      console.clear();
+      spinner.println(`${greenPrefix} Build complete.\n\n`);
+      spinner.println(
+        `${greenPrefix} Watching on ${displayPaths} for changes...`,
+      );
+      spinner.finishAndClear();
+      lastBuild = Date.now();
+    }
+  }
+
+  for (const [dirPath, cmd] of watchMap) {
+    fs.watch(dirPath, { recursive: true }, rebuild.bind(null, cmd));
+  }
+}
 
 let lastBuild = Date.now();
-fs.watch(dirPath, { recursive: true }, (eventType, filename) => {
-  if (Date.now() - lastBuild < 1000) {
-    return;
-  }
-  if (filename && !isIgnored(filename)) {
-    const spinner = createArchonsSpinner();
-    spinner.println(
-      `${greenPrefix} File ${chalk.cyan(filename)} was ${eventType}d, rebuilding...`,
-    );
-    spinner.enableSteadyTick(100);
-    if (filename.endsWith(".ts") || filename.endsWith(".tsx")) {
-      tryBuild("pnpm build", "Rebuilding...", spinner);
-    }
-    console.clear();
-    spinner.println(`${greenPrefix} Build complete.\n\n`);
-    spinner.println(
-      `${greenPrefix} Watching on ${chalk.cyan(path.relative(cwd, dirPath))} for changes...`,
-    );
-    spinner.finishAndClear();
-    lastBuild = Date.now();
-  }
-});
+watch();
