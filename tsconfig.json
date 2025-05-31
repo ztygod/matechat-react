@@ -7,7 +7,7 @@
     "module": "preserve",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": ["node", "@testing-library/jest-dom/vitest"],
     "strict": true,
     "noUnusedLocals": true,
     "declaration": true,
