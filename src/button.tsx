@@ -1,8 +1,9 @@
+import "./tailwind.css";
+
 import { type VariantProps, cva } from "class-variance-authority";
 import clsx from "clsx";
 import type * as React from "react";
 import { twMerge } from "tailwind-merge";
-import "./tailwind.css";
 
 const buttonVariants = cva(
   "inline-flex px-8 items-center justify-center rounded-md text-sm font-medium transition-colors",
