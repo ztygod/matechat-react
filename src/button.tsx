@@ -6,17 +6,15 @@ import type * as React from "react";
 import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(
-  "inline-flex px-8 items-center justify-center rounded-md text-sm font-medium transition-colors",
+  "cursor-pointer inline-flex px-8 items-center justify-center rounded-md text-sm font-medium transition-colors text-white dark:text-white/80",
   {
     variants: {
       variant: {
-        default: "bg-blue hover:bg-blue/90",
+        default: "bg-blue-500 hover:bg-blue-500/90 gap-1",
         link: "underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
       },
     },
     defaultVariants: {
@@ -30,10 +28,7 @@ function Button({
   className,
   variant,
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
+}: React.ComponentProps<"button"> & VariantProps<typeof buttonVariants>) {
   return (
     <button
       data-slot="button"
