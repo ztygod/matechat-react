@@ -10,7 +10,6 @@ export default defineConfig({
       name: "index",
       entry: "./src/index.ts",
       formats: ["es"],
-      fileName: (format, name) => `${name}.${format === "es" ? "mjs" : "cjs"}`,
     },
     rollupOptions: {
       external: [
@@ -24,6 +23,9 @@ export default defineConfig({
       output: {
         preserveModules: true,
         preserveModulesRoot: "src",
+        entryFileNames: () => {
+          return "[name].js";
+        },
       },
     },
   },
