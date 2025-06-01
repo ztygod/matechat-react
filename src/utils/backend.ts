@@ -1,13 +1,12 @@
 import { type Emitter, createNanoEvents } from "nanoevents";
 import OpenAI, { type ClientOptions } from "openai";
-import type { ChatCompletionUserMessageParam } from "openai/resources";
 import type {
   Backend,
   BaseEvent,
   EventTypes,
   Events,
   MessageParam,
-} from "./core";
+} from "./types";
 
 export interface OpenAIBackendConfig extends ClientOptions {
   model?: string;
@@ -15,6 +14,9 @@ export interface OpenAIBackendConfig extends ClientOptions {
   temperature?: number;
 }
 
+/**
+ * Options for the input method of the `OpenAIBackend` class.
+ */
 export interface InputOptions {
   /**
    * Additional options for the input, such as system messages or user messages.
@@ -35,18 +37,22 @@ export class OpenAIBackend implements Backend {
     this.emitter = createNanoEvents<Events>();
   }
 
-  async input(prompt: string, options: InputOptions): Promise<void> {
-    const msg: ChatCompletionUserMessageParam = {
-      role: "user",
-      content: prompt,
-    };
-    const { messages } = options;
+  async input(prompt: string, options?: InputOptions): Promise<void> {
+    this.emitter.emit("input", {
+      id: Symbol(),
+      type: "input",
+      payload: { prompt },
+    });
+    const { messages } = options || {};
     try {
       const response = await this.instance.chat.completions.create({
         model: this.config.model || "gpt-3.5-turbo",
-        messages: messages ?? [msg],
+        messages: messages
+          ? [...messages, { role: "user", content: prompt }]
+          : [{ role: "user", content: prompt }],
         ...this.config,
         stream: true,
+        max_completion_tokens: this.config.maxTokens,
         response_format: { type: "text" },
       });
       for await (const chunk of response) {

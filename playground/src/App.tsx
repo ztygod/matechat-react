@@ -1,5 +1,6 @@
 import { MessageSquarePlus, MessageSquareWarning } from "lucide-react";
-import { Bubble, BubbleList } from "../../dist/bubble";
+import { useEffect, useState } from "react";
+import { BubbleList } from "../../dist/bubble";
 import { Button } from "../../dist/button";
 import {
   Prompt,
@@ -8,9 +9,10 @@ import {
   Prompts,
 } from "../../dist/prompt";
 import type { MessageParam } from "../../dist/utils";
+import { useMateChat } from "../../dist/utils/core";
 
 export function App() {
-  const messages: MessageParam[] = [
+  const initialMessages: MessageParam[] = [
     {
       role: "user",
       content: "Hello, how are you?",
@@ -32,15 +34,63 @@ export function App() {
     },
   ];
 
+  const { backend } = useMateChat();
+  const [messages, setMessages] = useState<MessageParam[]>(initialMessages);
+  useEffect(() => {
+    const { backend } = useMateChat();
+    if (!backend) {
+      throw new Error("Backend is not set for the agent.");
+    }
+    backend.on("input", (event) => {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "user",
+          content: event.payload.prompt,
+          avatar: {
+            text: "U",
+          },
+          align: "right",
+        },
+      ]);
+    });
+    backend.on("chunk", (event) => {
+      setMessages((prev) => {
+        const lastMessage = prev[prev.length - 1];
+        if (lastMessage && lastMessage.role === "assistant") {
+          return [
+            ...prev.slice(0, -1),
+            {
+              ...lastMessage,
+              content: lastMessage.content + event.payload.chunk,
+            },
+          ];
+        }
+        return [
+          ...prev,
+          {
+            role: "assistant",
+            content: event.payload.chunk,
+            avatar: {
+              text: "A",
+            },
+            align: "left",
+          },
+        ];
+      });
+    });
+  }, []);
+
+  const [prompt, setPrompt] = useState<string>("");
+
   return (
     <>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-        <BubbleList className="max-w-3xl w-full" messages={messages} />
-        <Bubble text="Hello?" />
         <Button variant="default">
           <MessageSquarePlus size="1.1rem" />
           Default
         </Button>
+        <BubbleList className="max-w-3xl w-full" messages={messages} />
         <Prompts className="mt-4 mx-10">
           <Prompt size="default" className="max-w-md">
             <PromptTitle>
@@ -63,6 +113,28 @@ export function App() {
             </PromptDescription>
           </Prompt>
         </Prompts>
+        <div className="flex flex-row gap-3 items-center mt-4">
+          <input
+            type="input"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            className="mt-4 p-2 border border-gray-300 rounded w-80"
+            placeholder="Type your message here..."
+          />
+          <Button
+            className="mt-4"
+            onClick={() => {
+              if (!prompt) return;
+              backend?.input(prompt, {
+                messages,
+              });
+              setPrompt("");
+            }}
+            disabled={!prompt.trim()}
+          >
+            Send
+          </Button>
+        </div>
       </div>
     </>
   );

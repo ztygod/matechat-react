@@ -38,7 +38,7 @@ export type Events = {
 
 export interface MessageParam {
   role: "user" | "assistant" | "system" | "developer";
-  name: string;
+  name?: string;
   content: string;
   avatar?: string | AvatarProps;
   align?: "left" | "center" | "right";
@@ -49,40 +49,9 @@ export type Awaitable<T> = T | Promise<T>;
 export interface Backend {
   name: string;
   emitter: Emitter<Events>;
-  input(prompt: string, config: unknown): Awaitable<void>;
-  on<K extends EventTypes["type"]>(type: K, handler: Events[K]): () => void;
-}
-
-class Agent<BackendType extends Backend = Backend> {
-  id: symbol;
-  backend: BackendType | undefined;
-
-  constructor() {
-    this.id = Symbol("agent");
-  }
-
-  setBackend(backend: BackendType): void {
-    this.backend = backend;
-  }
-
-  getBackend(): BackendType | undefined {
-    return this.backend;
-  }
-}
-
-export function createAgent(): Agent {
-  const newAgent = new Agent();
-  if (!agent) {
-    agent = newAgent;
-  }
-  return agent;
-}
-
-export let agent: Agent | undefined;
-
-export function useAgent() {
-  if (!agent) {
-    throw new Error("Agent not initialized");
-  }
-  return { agent };
+  input(prompt: string, config?: unknown): Awaitable<void>;
+  on<K extends EventTypes["type"]>(
+    type: K,
+    handler: EventHandler<K>,
+  ): () => void;
 }
