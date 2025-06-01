@@ -37,7 +37,8 @@ export type Events = {
 };
 
 export interface MessageParam {
-  role: string;
+  role: "user" | "assistant" | "system" | "developer";
+  name: string;
   content: string;
   avatar?: string | AvatarProps;
   align?: "left" | "center" | "right";
@@ -49,7 +50,6 @@ export interface Backend {
   name: string;
   emitter: Emitter<Events>;
   input(prompt: string, config: unknown): Awaitable<void>;
-  getMessages: () => Awaitable<MessageParam[]>;
   on<K extends EventTypes["type"]>(type: K, handler: Events[K]): () => void;
 }
 

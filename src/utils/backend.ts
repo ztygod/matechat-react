@@ -1,9 +1,6 @@
 import { type Emitter, createNanoEvents } from "nanoevents";
 import OpenAI, { type ClientOptions } from "openai";
-import type {
-  ChatCompletionMessageParam,
-  ChatCompletionUserMessageParam,
-} from "openai/resources";
+import type { ChatCompletionUserMessageParam } from "openai/resources";
 import type {
   Backend,
   BaseEvent,
@@ -18,36 +15,36 @@ export interface OpenAIBackendConfig extends ClientOptions {
   temperature?: number;
 }
 
-export interface InputConfig {
-  withChatHistory?: boolean;
+export interface InputOptions {
+  /**
+   * Additional options for the input, such as system messages or user messages.
+   * If not provided, a default user message will be used.
+   * @default undefined
+   */
+  messages?: MessageParam[];
 }
 
 export class OpenAIBackend implements Backend {
   name: string;
   instance: OpenAI;
-  messages: ChatCompletionMessageParam[];
   emitter: Emitter<Events>;
 
   constructor(public config: OpenAIBackendConfig) {
     this.name = "OpenAI";
     this.instance = new OpenAI(config);
-    this.messages = [];
     this.emitter = createNanoEvents<Events>();
   }
 
-  async input(prompt: string, config: InputConfig): Promise<void> {
+  async input(prompt: string, options: InputOptions): Promise<void> {
     const msg: ChatCompletionUserMessageParam = {
       role: "user",
       content: prompt,
     };
-    const { withChatHistory } = config;
-    if (withChatHistory) {
-      this.messages.push(msg);
-    }
+    const { messages } = options;
     try {
       const response = await this.instance.chat.completions.create({
         model: this.config.model || "gpt-3.5-turbo",
-        messages: withChatHistory ? this.messages : [msg],
+        messages: messages ?? [msg],
         ...this.config,
         stream: true,
         response_format: { type: "text" },
@@ -66,14 +63,6 @@ export class OpenAIBackend implements Backend {
         payload: { error: (error as Error).message },
       });
     }
-  }
-
-  getMessages(): MessageParam[] {
-    return this.messages as MessageParam[];
-  }
-
-  clearMessages(): void {
-    this.messages = [];
   }
 
   on<K extends EventTypes["type"]>(
