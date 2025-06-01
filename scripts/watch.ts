@@ -1,4 +1,4 @@
-import { execSync } from "node:child_process";
+import { execSync, spawn } from "node:child_process";
 import fs, { type WatchEventType } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -35,14 +35,7 @@ const cwd = process.cwd();
 const watchMap = new Map<string, string>([
   [
     path.join(path.dirname(fileURLToPath(import.meta.url)), "../src"),
-    "pnpm build && pnpm playground:build",
-  ],
-  [
-    path.join(
-      path.dirname(fileURLToPath(import.meta.url)),
-      "../playground/src",
-    ),
-    "pnpm playground:build",
+    "pnpm build",
   ],
 ]);
 const displayPaths = Array.from(watchMap.keys())
@@ -76,11 +69,39 @@ console.log(`${greenPrefix} Build complete.\n`);
 console.log(`${greenPrefix} Watching on ${displayPaths} for changes...`);
 
 function watch() {
+  function useDevProcess() {
+    let devProcess = spawn(
+      "pnpm",
+      ["run", "--silent", "preview", "--clearScreen", "false"],
+      {
+        stdio: "inherit",
+        shell: true,
+      },
+    );
+    return () => {
+      devProcess.kill("SIGINT");
+      devProcess = spawn(
+        "pnpm",
+        ["run", "--silent", "preview", "--clearScreen", "false"],
+        {
+          stdio: "inherit",
+          shell: true,
+        },
+      );
+      devProcess.on("error", (err) => {
+        console.error(`${greenPrefix} Error restarting dev process:`, err);
+      });
+    };
+  }
+  const restartServer = useDevProcess();
+
   function rebuild(
     command: string,
     eventType: WatchEventType,
     filename: string | null,
   ) {
+    restartServer();
+
     if (Date.now() - lastBuild < 1000) {
       return;
     }
