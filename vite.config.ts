@@ -1,5 +1,6 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
+import path from "node:path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
@@ -12,18 +13,18 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime",
-        "clsx",
-        "tailwind-merge",
-        "class-variance-authority",
-      ],
+      external: ["react", "react-dom", "react/jsx-runtime"],
       output: {
         preserveModules: true,
         preserveModulesRoot: "src",
-        entryFileNames: () => {
+        entryFileNames: (info) => {
+          if (info.facadeModuleId?.includes("node_modules")) {
+            const idx = info.facadeModuleId.lastIndexOf("node_modules");
+            const relativePath = info.facadeModuleId.slice(
+              idx + "node_modules/".length,
+            );
+            return path.join("modules", relativePath);
+          }
           return "[name].js";
         },
       },

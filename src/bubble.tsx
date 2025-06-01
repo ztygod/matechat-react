@@ -4,6 +4,7 @@ import "./tailwind.css";
 import clsx from "clsx";
 import type React from "react";
 import { twMerge } from "tailwind-merge";
+import type { MessageParam } from "./utils";
 
 const bubbleVariants = cva(
   "flex flex-col gap-1 justify-center rounded-lg bg-gray-200 dark:bg-gray-800 dark:text-gray-200 text-gray-800",
@@ -88,13 +89,6 @@ export function Avatar({
       )}
     </div>
   );
-}
-
-export interface MessageParam {
-  role: string;
-  content: string;
-  avatar?: string | AvatarProps;
-  align?: "left" | "center" | "right";
 }
 
 export interface BubbleListProps {

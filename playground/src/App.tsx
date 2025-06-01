@@ -1,5 +1,5 @@
 import { MessageSquarePlus, MessageSquareWarning } from "lucide-react";
-import { Bubble, BubbleList, type MessageParam } from "../../dist/bubble";
+import { Bubble, BubbleList } from "../../dist/bubble";
 import { Button } from "../../dist/button";
 import {
   Prompt,
@@ -7,6 +7,7 @@ import {
   PromptTitle,
   Prompts,
 } from "../../dist/prompt";
+import type { MessageParam } from "../../dist/utils";
 
 export function App() {
   const messages: MessageParam[] = [
