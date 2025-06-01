@@ -8,7 +8,14 @@ import type {
   MessageParam,
 } from "./types";
 
+/**
+ * Configuration options for the `OpenAIBackend` class.
+ */
 export interface OpenAIBackendConfig extends ClientOptions {
+  /**
+   * The OpenAI model to use for chat completions.
+   * @default "gpt-3.5-turbo"
+   */
   model?: string;
   maxTokens?: number;
   temperature?: number;
@@ -26,17 +33,44 @@ export interface InputOptions {
   messages?: MessageParam[];
 }
 
+/**
+ * A backend implementation that uses the OpenAI API for chat completions.
+ */
 export class OpenAIBackend implements Backend {
-  name: string;
+  /**
+   * The name of the backend.
+   */
+  readonly name = "OpenAI";
+  /**
+   * The OpenAI client instance.
+   */
   instance: OpenAI;
+  /**
+   * An event emitter for handling events.
+   *
+   * @remarks
+   * Based on `nanoevents`, this emitter allows for subscribing to and emitting events.
+   * It supports events such as "input", "message", "error", and "chunk".
+   */
   emitter: Emitter<Events>;
 
+  /**
+   * Creates a new instance of the `OpenAIBackend` class.
+   *
+   * @param config - The configuration options for the backend.
+   */
   constructor(public config: OpenAIBackendConfig) {
-    this.name = "OpenAI";
     this.instance = new OpenAI(config);
     this.emitter = createNanoEvents<Events>();
   }
 
+  /**
+   * Sends a user input prompt to the OpenAI API and emits events based on the response.
+   *
+   * @param prompt - The user input prompt to send.
+   * @param options - Additional options for the input, such as messages.
+   * @returns {Promise<void>} A promise that resolves when the input has been processed.
+   */
   async input(prompt: string, options?: InputOptions): Promise<void> {
     this.emitter.emit("input", {
       id: Symbol(),
@@ -71,6 +105,13 @@ export class OpenAIBackend implements Backend {
     }
   }
 
+  /**
+   * Subscribes to an event of a specific type and registers a handler for it.
+   *
+   * @param type - The type of the event to subscribe to.
+   * @param handler - The handler function to call when the event is emitted.
+   * @returns A function that can be called to unsubscribe from the event.
+   */
   on<K extends EventTypes["type"]>(
     type: K,
     handler: Events[K] extends (event: BaseEvent<K>) => void

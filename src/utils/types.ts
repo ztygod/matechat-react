@@ -47,7 +47,7 @@ export interface MessageParam {
 export type Awaitable<T> = T | Promise<T>;
 
 export interface Backend {
-  name: string;
+  readonly name: string;
   emitter: Emitter<Events>;
   input(prompt: string, config?: unknown): Awaitable<void>;
   on<K extends EventTypes["type"]>(
