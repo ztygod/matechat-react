@@ -121,3 +121,18 @@ export class OpenAIBackend implements Backend {
     return this.emitter.on(type, handler);
   }
 }
+
+/**
+ * Creates a new instance of the `OpenAIBackend` class with the provided configuration.
+ * @param config - The configuration options for the backend.
+ * @returns A new instance of the `OpenAIBackend` class.
+ * @example
+ * const backend = createOpenAIBackend({
+ *   apiKey: "<your-api-key>",
+ *   model: "deepseek-chat",
+ * });
+ })
+ */
+export function createOpenAIBackend(config: OpenAIBackendConfig) {
+  return new OpenAIBackend(config);
+}
