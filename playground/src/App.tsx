@@ -1,5 +1,5 @@
 import { MessageSquarePlus, MessageSquareWarning } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BubbleList } from "../../dist/bubble";
 import { Button } from "../../dist/button";
 import {
@@ -9,6 +9,7 @@ import {
   Prompts,
 } from "../../dist/prompt";
 import type { MessageParam } from "../../dist/utils";
+import { useChat } from "../../dist/utils/chat";
 import { useMateChat } from "../../dist/utils/core";
 
 export function App() {
@@ -35,51 +36,10 @@ export function App() {
   ];
 
   const { backend } = useMateChat();
-  const [messages, setMessages] = useState<MessageParam[]>(initialMessages);
-  useEffect(() => {
-    const { backend } = useMateChat();
-    if (!backend) {
-      throw new Error("Backend is not set for the agent.");
-    }
-    backend.on("input", (event) => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "user",
-          content: event.payload.prompt,
-          avatar: {
-            text: "U",
-          },
-          align: "right",
-        },
-      ]);
-    });
-    backend.on("chunk", (event) => {
-      setMessages((prev) => {
-        const lastMessage = prev[prev.length - 1];
-        if (lastMessage && lastMessage.role === "assistant") {
-          return [
-            ...prev.slice(0, -1),
-            {
-              ...lastMessage,
-              content: lastMessage.content + event.payload.chunk,
-            },
-          ];
-        }
-        return [
-          ...prev,
-          {
-            role: "assistant",
-            content: event.payload.chunk,
-            avatar: {
-              text: "A",
-            },
-            align: "left",
-          },
-        ];
-      });
-    });
-  }, []);
+  if (!backend) {
+    throw new Error("Backend is not set for the agent.");
+  }
+  const { messages, input } = useChat(backend, initialMessages);
 
   const [prompt, setPrompt] = useState<string>("");
 
@@ -125,7 +85,7 @@ export function App() {
             className="mt-4"
             onClick={() => {
               if (!prompt) return;
-              backend?.input(prompt, {
+              input(prompt, {
                 messages,
               });
               setPrompt("");

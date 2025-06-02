@@ -1,0 +1,92 @@
+import { useEffect, useState } from "react";
+import type { InputOptions } from "./backend";
+import type { Backend, EventTypes, Events, MessageParam } from "./types";
+
+export function useChat(
+  backend: Backend,
+  initialMessages: MessageParam[] = [],
+): {
+  messages: MessageParam[];
+  input: (prompt: string, options?: InputOptions) => Promise<void>;
+  on: <K extends EventTypes["type"]>(type: K, handler: Events[K]) => () => void;
+} {
+  const [messages, setMessages] = useState<MessageParam[]>(initialMessages);
+
+  const input = async (prompt: string, options?: InputOptions) => {
+    return backend.input(prompt, options);
+  };
+
+  const on = <K extends EventTypes["type"]>(
+    type: K,
+    handler: Events[K],
+  ): (() => void) => {
+    return backend.on(type, handler);
+  };
+
+  useEffect(() => {
+    const cleanCbs: (() => void)[] = [
+      backend.on("input", (event) => {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            role: "user",
+            name: "User",
+            content: event.payload.prompt,
+            avatar: {
+              text: "U",
+            },
+            align: "right",
+          },
+        ]);
+      }),
+      backend.on("message", (event) => {
+        setMessages((prevMessages) => [...prevMessages, event.payload]);
+      }),
+      backend.on("error", (event) => {
+        console.error("Error from backend:", event.payload.error);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            role: "system",
+            name: "Error",
+            content: event.payload.error,
+            align: "center",
+          },
+        ]);
+      }),
+      backend.on("chunk", (event) => {
+        setMessages((prev) => {
+          const lastMessage = prev[prev.length - 1];
+          if (lastMessage && lastMessage.role === "assistant") {
+            return [
+              ...prev.slice(0, -1),
+              {
+                ...lastMessage,
+                content: lastMessage.content + event.payload.chunk,
+              },
+            ];
+          }
+          return [
+            ...prev,
+            {
+              role: "assistant",
+              content: event.payload.chunk,
+              avatar: {
+                text: "A",
+              },
+              align: "left",
+            },
+          ];
+        });
+      }),
+    ];
+    return () => {
+      for (const cb of cleanCbs) {
+        cb();
+      }
+      cleanCbs.length = 0;
+    };
+  }, [backend]);
+
+  return { messages, input, on };
+}
