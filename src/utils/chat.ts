@@ -9,11 +9,15 @@ export function useChat(
   messages: MessageParam[];
   input: (prompt: string, options?: InputOptions) => Promise<void>;
   on: <K extends EventTypes["type"]>(type: K, handler: Events[K]) => () => void;
+  setMessages: React.Dispatch<React.SetStateAction<MessageParam[]>>;
 } {
   const [messages, setMessages] = useState<MessageParam[]>(initialMessages);
 
   const input = async (prompt: string, options?: InputOptions) => {
-    return backend.input(prompt, options);
+    return backend.input(prompt, {
+      messages,
+      ...options,
+    });
   };
 
   const on = <K extends EventTypes["type"]>(
@@ -88,5 +92,5 @@ export function useChat(
     };
   }, [backend]);
 
-  return { messages, input, on };
+  return { messages, input, on, setMessages };
 }

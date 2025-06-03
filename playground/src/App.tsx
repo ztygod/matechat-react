@@ -2,6 +2,7 @@ import { MessageSquarePlus, MessageSquareWarning } from "lucide-react";
 import { useState } from "react";
 import { BubbleList } from "../../dist/bubble";
 import { Button } from "../../dist/button";
+import { Sender } from "../../dist/sender";
 import {
   Prompt,
   PromptDescription,
@@ -39,62 +40,53 @@ export function App() {
   if (!backend) {
     throw new Error("Backend is not set for the agent.");
   }
-  const { messages, input } = useChat(backend, initialMessages);
+  const { messages, input, setMessages } = useChat(backend, initialMessages);
+  const [prompt, setPrompt] = useState("");
 
-  const [prompt, setPrompt] = useState<string>("");
+  const onClear = () => {
+    setPrompt("");
+    setMessages(initialMessages);
+  };
 
   return (
     <>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-        <Button variant="default">
-          <MessageSquarePlus size="1.1rem" />
-          Default
-        </Button>
-        <BubbleList className="max-w-3xl w-full" messages={messages} />
-        <Prompts className="mt-4 mx-10">
-          <Prompt size="default" className="max-w-md">
-            <PromptTitle>
-              <MessageSquareWarning />
-              Analysis of the Transformer Model
-            </PromptTitle>
-            <PromptDescription>
-              Give a detailed analysis of the Transformer model, including its
-              architecture, key components, and so on.
-            </PromptDescription>
-          </Prompt>
-          <Prompt className="max-w-md">
-            <PromptTitle>
-              <MessageSquareWarning />
-              Understanding the Attention Mechanism
-            </PromptTitle>
-            <PromptDescription>
-              Explain the attention mechanism in neural networks, focusing on
-              its role in sequence-to-sequence tasks.
-            </PromptDescription>
-          </Prompt>
-        </Prompts>
-        <div className="flex flex-row gap-3 items-center mt-4">
-          <input
-            type="input"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            className="mt-4 p-2 border border-gray-300 rounded w-80"
-            placeholder="Type your message here..."
-          />
-          <Button
-            className="mt-4"
-            onClick={() => {
-              if (!prompt) return;
-              input(prompt, {
-                messages,
-              });
-              setPrompt("");
-            }}
-            disabled={!prompt.trim()}
-          >
-            Send
+        <main className="flex flex-col items-center justify-center h-[80vh] w-full max-w-3xl p-4 bg-white rounded-lg shadow-md gap-5">
+          <Button onClick={onClear} variant="default" className="self-start">
+            <MessageSquarePlus size="1.1rem" />
+            Clear
           </Button>
-        </div>
+          <BubbleList
+            className="max-w-3xl w-full flex-1 overflow-y-auto"
+            messages={messages}
+          />
+          <Prompts className="mx-10">
+            <Prompt size="md" className="max-w-xs">
+              <PromptTitle>
+                <MessageSquareWarning />
+                Analysis of the Transformer Model
+              </PromptTitle>
+              <PromptDescription>
+                Give a detailed analysis of the Transformer model.
+              </PromptDescription>
+            </Prompt>
+            <Prompt className="max-w-xs">
+              <PromptTitle>
+                <MessageSquareWarning />
+                Understanding the Attention Mechanism
+              </PromptTitle>
+              <PromptDescription>
+                Explain the attention mechanism in neural networks.
+              </PromptDescription>
+            </Prompt>
+          </Prompts>
+          <Sender
+            className="w-full"
+            initialMessage={prompt}
+            input={input}
+            onMessageChange={setPrompt}
+          />
+        </main>
       </div>
     </>
   );
