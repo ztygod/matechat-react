@@ -25,6 +25,18 @@ export interface InputOptions {
    * @default undefined
    */
   messages?: MessageParam[];
+  /**
+   * Optional callbacks for handling input, chunk, error, and finish events.
+   * These callbacks only apply to the `input` method and are not registered
+   * globally on the backend.
+   * @default undefined
+   */
+  callbacks?: {
+    onInput?: (prompt: string) => void;
+    onChunk?: (chunk: string) => void;
+    onError?: (error: Error) => void;
+    onFinish?: () => void;
+  };
 }
 
 /**
@@ -71,6 +83,7 @@ export class OpenAIBackend implements Backend {
       type: "input",
       payload: { prompt },
     });
+    options?.callbacks?.onInput?.(prompt);
     const { messages } = options || {};
     try {
       const response = await this.instance.chat.completions.create({
@@ -84,11 +97,13 @@ export class OpenAIBackend implements Backend {
         response_format: { type: "text" },
       });
       for await (const chunk of response) {
+        const chunkMessage = chunk.choices[0].delta.content || "";
         this.emitter.emit("chunk", {
           id: Symbol(chunk.id),
           type: "chunk",
-          payload: { chunk: chunk.choices[0].delta.content || "" },
+          payload: { chunk: chunkMessage },
         });
+        options?.callbacks?.onChunk?.(chunkMessage);
       }
     } catch (error) {
       this.emitter.emit("error", {
@@ -97,6 +112,12 @@ export class OpenAIBackend implements Backend {
         payload: { error: (error as Error).message },
       });
     }
+    this.emitter.emit("finish", {
+      id: Symbol(),
+      type: "finish",
+      payload: { message: prompt },
+    });
+    options?.callbacks?.onFinish?.();
   }
 
   /**

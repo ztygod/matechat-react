@@ -26,14 +26,24 @@ export interface ChunkEvent extends BaseEvent<"chunk"> {
     chunk: string;
   };
 }
+export interface FinishEvent extends BaseEvent<"finish"> {
+  payload: {
+    message: string;
+  };
+}
 
-export type EventTypes = InputEvent | MessageEvent | ErrorEvent | ChunkEvent;
+export type EventTypes =
+  | InputEvent
+  | MessageEvent
+  | ErrorEvent
+  | ChunkEvent
+  | FinishEvent;
 
 export type EventHandler<K extends EventTypes["type"]> = (
   event: Extract<EventTypes, BaseEvent<K>>,
 ) => void;
 export type Events = {
-  [key in EventTypes["type"]]: EventHandler<key>;
+  [E in EventTypes["type"]]: EventHandler<E>;
 };
 
 export interface MessageParam {
