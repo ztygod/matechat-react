@@ -1,7 +1,10 @@
+import "./tailwind.css";
+import "@devui-design/icons/icomoon/devui-icon.css";
+
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import type { Awaitable } from "./utils";
+import type { Backend } from "./utils";
 
 export function SenderButton({
   className,
@@ -25,7 +28,7 @@ export function SenderButton({
 export interface SenderProps extends React.ComponentProps<"div"> {
   initialMessage?: string;
   placeholder?: string;
-  input: (prompt: string) => Awaitable<void>;
+  input: Backend["input"];
   onMessageChange?: (message: string) => void;
   onSend?: () => void;
 }
@@ -40,6 +43,7 @@ export function Sender({
 }: SenderProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [message, setMessage] = useState(initialMessage);
+  const [isSending, setIsSending] = useState(false);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: height adjustment
   useEffect(() => {
@@ -52,7 +56,12 @@ export function Sender({
 
   const handleSend = () => {
     if (message.trim() === "") return;
-    const maybePromise = input(message);
+    setIsSending(true);
+    const maybePromise = input(message, {
+      callbacks: {
+        onFinish: () => setIsSending(false),
+      },
+    });
     setMessage("");
     if (maybePromise instanceof Promise) {
       maybePromise.then(() => {
@@ -93,7 +102,13 @@ export function Sender({
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">{message.length} / 500</span>
         </div>
-        <SenderButton onClick={handleSend} />
+        <SenderButton onClick={handleSend}>
+          {isSending ? (
+            <i className="icon icon-quick-stop" />
+          ) : (
+            <i className="icon icon-publish-new" />
+          )}
+        </SenderButton>
       </div>
     </div>
   );

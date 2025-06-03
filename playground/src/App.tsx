@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Chat } from "./Chat";
 import { Activate } from "./Activate";
+import { Chat } from "./Chat";
 
 export function App() {
   const [activated, setActivated] = useState<boolean>(false);

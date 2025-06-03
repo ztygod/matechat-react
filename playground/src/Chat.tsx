@@ -2,13 +2,13 @@ import { MessageSquarePlus, MessageSquareWarning } from "lucide-react";
 import { useState } from "react";
 import { BubbleList } from "../../dist/bubble";
 import { Button } from "../../dist/button";
-import { Sender } from "../../dist/sender";
 import {
   Prompt,
   PromptDescription,
   PromptTitle,
   Prompts,
 } from "../../dist/prompt";
+import { Sender } from "../../dist/sender";
 import type { MessageParam } from "../../dist/utils";
 import { useChat } from "../../dist/utils/chat";
 import { useMateChat } from "../../dist/utils/core";
