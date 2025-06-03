@@ -79,17 +79,22 @@ function watch() {
       },
     );
     return () => {
+      const spinner = createArchonsSpinner();
+      spinner.println(`${greenPrefix} Restarting Vite dev server...`);
       while (!devProcess.kill("SIGINT"));
-      devProcess = spawn(
-        "pnpm",
-        ["run", "--silent", "preview", "--clearScreen", "false"],
-        {
-          stdio: "inherit",
-          shell: true,
-        },
-      );
-      devProcess.on("error", (err) => {
-        console.error(`${greenPrefix} Error restarting dev process:`, err);
+      devProcess.on("close", () => {
+        devProcess = spawn(
+          "pnpm",
+          ["run", "--silent", "preview", "--clearScreen", "false"],
+          {
+            stdio: "inherit",
+            shell: true,
+          },
+        );
+        devProcess.on("error", (err) => {
+          console.error(`${greenPrefix} Error restarting dev process:`, err);
+        });
+        spinner.finishAndClear();
       });
     };
   }
@@ -100,11 +105,12 @@ function watch() {
     eventType: WatchEventType,
     filename: string | null,
   ) {
-    restartServer();
-
     if (Date.now() - lastBuild < 1000) {
       return;
     }
+
+    restartServer();
+
     if (filename && !isIgnored(filename)) {
       const spinner = createArchonsSpinner();
       spinner.println(
