@@ -91,44 +91,54 @@ export function Avatar({
   );
 }
 
-export interface BubbleListProps {
+export interface BubbleListProps extends React.ComponentProps<"div"> {
   messages: MessageParam[];
+  footer: React.ReactNode;
 }
 
-export function BubbleList({
-  className,
-  ...props
-}: React.ComponentProps<"div"> & BubbleListProps) {
+export function BubbleList({ className, footer, ...props }: BubbleListProps) {
   const { messages } = props;
 
   return (
     <div
       data-slot="bubble-list"
-      className={twMerge(clsx("flex flex-col gap-4", className))}
+      className={twMerge(
+        clsx("flex flex-col overflow-y-auto flex-1 gap-4", className),
+      )}
       {...props}
     >
-      {messages.map((message, index) => (
+      <div data-slot="bubble-items" className="flex flex-col flex-1 gap-4">
+        {messages.map((message, index) => (
+          <div
+            key={message.content.slice(0, 8) + index.toString()}
+            data-slot="bubble-item"
+            className={twMerge(
+              clsx(
+                "flex items-start gap-2",
+                message.align === "right" && "flex-row-reverse",
+              ),
+            )}
+          >
+            {message.avatar && (
+              <Avatar
+                className="flex-shrink-0"
+                {...(typeof message.avatar === "string"
+                  ? { imageUrl: message.avatar }
+                  : message.avatar)}
+              />
+            )}
+            <Bubble text={message.content} align={message.align} />
+          </div>
+        ))}
+      </div>
+      {footer && (
         <div
-          key={message.content.slice(0, 8) + index.toString()}
-          data-slot="bubble-item"
-          className={twMerge(
-            clsx(
-              "flex items-start gap-2",
-              message.align === "right" && "flex-row-reverse",
-            ),
-          )}
+          data-slot="bubble-footer"
+          className="flex items-center justify-center mt-4"
         >
-          {message.avatar && (
-            <Avatar
-              className="flex-shrink-0"
-              {...(typeof message.avatar === "string"
-                ? { imageUrl: message.avatar }
-                : message.avatar)}
-            />
-          )}
-          <Bubble text={message.content} align={message.align} />
+          {footer}
         </div>
-      ))}
+      )}
     </div>
   );
 }

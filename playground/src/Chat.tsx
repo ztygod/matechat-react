@@ -53,13 +53,20 @@ export function Chat() {
     <>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
         <main className="flex flex-col items-center justify-center h-[80vh] w-full max-w-3xl p-4 bg-white rounded-lg shadow-md gap-5">
-          <div className="flex flex-col overflow-y-auto flex-1 gap-4 px-4">
-            <BubbleList messages={messages} />
-            <Button onClick={onClear} variant="default" className="self-center">
-              <MessageSquarePlus size="1.1rem" />
-              Start a new conversation
-            </Button>
-          </div>
+          <BubbleList
+            className="px-4"
+            messages={messages}
+            footer={
+              <Button
+                onClick={onClear}
+                variant="default"
+                className="self-center"
+              >
+                <MessageSquarePlus size="1.1rem" />
+                Start a new conversation
+              </Button>
+            }
+          />
           {messages.length === 2 && (
             <Prompts className="mx-10">
               <Prompt size="md" className="max-w-xs">
