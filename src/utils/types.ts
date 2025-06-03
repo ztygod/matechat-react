@@ -46,6 +46,32 @@ export interface MessageParam {
 
 export type Awaitable<T> = T | Promise<T>;
 
+/**
+ * Backend interface for chatbot.
+ * @example
+ * ```ts
+ * import { Backend } from "matechat";
+ * import { type Emitter, createNanoEvents } from "nanoevents";
+ *
+ * class MyBackend implements Backend {
+ *   name = "my-backend";
+ *   constructor() {
+ *     this.emitter = createNanoEvents<Events>();
+ *   }
+ * }
+ * 
+ * input(prompt: string, config?: unknown): void {
+ *   // Handle input logic here
+ * }
+ * 
+ * on<K extends EventTypes["type"]>(
+ *   type: K,
+ *   handler: Events[K],
+ * ): () => void {
+ *   return this.emitter.on(type, handler);
+ * }
+ }
+ */
 export interface Backend {
   readonly name: string;
   emitter: Emitter<Events>;
