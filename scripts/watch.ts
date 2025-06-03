@@ -79,7 +79,7 @@ function watch() {
       },
     );
     return () => {
-      devProcess.kill("SIGINT");
+      while (!devProcess.kill("SIGINT"));
       devProcess = spawn(
         "pnpm",
         ["run", "--silent", "preview", "--clearScreen", "false"],

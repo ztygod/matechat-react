@@ -13,10 +13,13 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
+      treeshake: {
+        moduleSideEffects: false,
+      },
       external: ["react", "react-dom", "react/jsx-runtime"],
       output: {
         preserveModules: true,
-        preserveModulesRoot: "src",
+        preserveModulesRoot: path.resolve(__dirname, "src"),
         entryFileNames: (info) => {
           if (info.facadeModuleId?.includes("node_modules")) {
             const idx = info.facadeModuleId.lastIndexOf("node_modules");
@@ -27,6 +30,7 @@ export default defineConfig({
           }
           return "[name].js";
         },
+        chunkFileNames: "[name]-[hash].js",
       },
     },
   },
