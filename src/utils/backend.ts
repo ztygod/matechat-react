@@ -1,12 +1,6 @@
 import { type Emitter, createNanoEvents } from "nanoevents";
 import OpenAI, { type ClientOptions } from "openai";
-import type {
-  Backend,
-  BaseEvent,
-  EventTypes,
-  Events,
-  MessageParam,
-} from "./types";
+import type { Backend, EventTypes, Events, MessageParam } from "./types";
 
 /**
  * Configuration options for the `OpenAIBackend` class.
@@ -112,12 +106,7 @@ export class OpenAIBackend implements Backend {
    * @param handler - The handler function to call when the event is emitted.
    * @returns A function that can be called to unsubscribe from the event.
    */
-  on<K extends EventTypes["type"]>(
-    type: K,
-    handler: Events[K] extends (event: BaseEvent<K>) => void
-      ? Events[K]
-      : never,
-  ): () => void {
+  on<K extends EventTypes["type"]>(type: K, handler: Events[K]): () => void {
     return this.emitter.on(type, handler);
   }
 }
