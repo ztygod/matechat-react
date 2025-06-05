@@ -98,6 +98,14 @@ export interface BubbleListProps extends React.ComponentProps<"div"> {
 
 export function BubbleList({ className, footer, ...props }: BubbleListProps) {
   const { messages } = props;
+  const lastMessageRef = useRef<HTMLDivElement>(null);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: This effect runs only when messages change
+  useEffect(() => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   return (
     <div
@@ -107,7 +115,10 @@ export function BubbleList({ className, footer, ...props }: BubbleListProps) {
       )}
       {...props}
     >
-      <div data-slot="bubble-items" className="flex flex-col flex-1 gap-4">
+      <div
+        data-slot="bubble-items"
+        className="flex flex-col max-w-full flex-1 gap-4"
+      >
         {messages.map((message, index) => (
           <div
             key={message.content.slice(0, 8) + index.toString()}
@@ -127,7 +138,11 @@ export function BubbleList({ className, footer, ...props }: BubbleListProps) {
                   : message.avatar)}
               />
             )}
-            <Bubble text={message.content} align={message.align} />
+            <Bubble
+              text={message.content}
+              align={message.align}
+              ref={index === messages.length - 1 ? lastMessageRef : undefined}
+            />
           </div>
         ))}
       </div>
