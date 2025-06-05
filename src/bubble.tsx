@@ -3,11 +3,50 @@ import "./tailwind.css";
 
 import clsx from "clsx";
 import type React from "react";
+import { useEffect, useRef, useState } from "react";
+import Markdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {
+  oneLight,
+  vscDarkPlus,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import { twMerge } from "tailwind-merge";
 import type { MessageParam } from "./utils";
 
+const useTheme = () => {
+  const [isDark, setDark] = useState(false);
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setDark(document.documentElement.classList.contains("dark"));
+    };
+    checkDarkMode();
+
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleSystemThemeChange = (event: MediaQueryListEvent) => {
+      setDark(event.matches);
+    };
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+
+    return () => {
+      observer.disconnect();
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    };
+  }, []);
+
+  return { isDark };
+};
+
 const bubbleVariants = cva(
-  "flex flex-col gap-1 justify-center rounded-lg bg-gray-200 dark:bg-gray-800 dark:text-gray-200 text-gray-800",
+  "flex flex-col gap-1 justify-center rounded-lg dark:text-gray-200 text-gray-800 max-w-full overflow-x-auto",
   {
     variants: {
       size: {
@@ -22,6 +61,10 @@ const bubbleVariants = cva(
         center: "self-center",
         right: "self-end",
       },
+      background: {
+        transparent: "bg-transparent",
+        solid: "bg-gray-100 dark:bg-gray-800",
+      },
     },
     defaultVariants: {
       size: "default",
@@ -30,10 +73,27 @@ const bubbleVariants = cva(
   },
 );
 
-export interface BubbleProps {
+export type BackgroundType =
+  | "transparent"
+  | "solid"
+  | "left-only"
+  | "right-only";
+/**
+ * Props for the Bubble component.
+ */
+export interface BubbleProps
+  extends React.ComponentProps<"div">,
+    Omit<VariantProps<typeof bubbleVariants>, "background"> {
+  /**
+   * The text to display in the bubble.
+   * @description The content of the bubble, which can include Markdown syntax.
+   */
   text: string;
-  copy?: boolean;
-  onCopy?: () => void;
+  /**
+   * Whether to display the background of the bubble.
+   * @default "right-only"
+   */
+  background?: BackgroundType;
 }
 
 export function Bubble({
@@ -41,17 +101,71 @@ export function Bubble({
   text,
   size,
   align,
+  background = "right-only",
   ...props
-}: React.ComponentProps<"div"> &
-  VariantProps<typeof bubbleVariants> &
-  BubbleProps) {
+}: BubbleProps) {
+  const { isDark } = useTheme();
+
   return (
     <div
       data-slot="bubble"
-      className={twMerge(clsx(bubbleVariants({ className, size, align })))}
+      className={twMerge(
+        clsx(
+          bubbleVariants({
+            className,
+            size,
+            align,
+            background:
+              background === "solid" ||
+              (background === "left-only" && align === "left") ||
+              (background === "right-only" && align === "right")
+                ? "solid"
+                : "transparent",
+          }),
+        ),
+      )}
       {...props}
     >
-      {text}
+      <Markdown
+        remarkPlugins={[remarkGfm, remarkMath]}
+        components={{
+          code(props) {
+            const { children, className, ref: _ref, ...rest } = props;
+            const match = /language-(\w+)/.exec(className || "");
+            return match ? (
+              <div className="w-full overflow-x-auto border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <SyntaxHighlighter
+                  {...rest}
+                  PreTag="div"
+                  language={match[1]}
+                  style={isDark ? vscDarkPlus : oneLight}
+                  customStyle={{
+                    background: "transparent",
+                    margin: 0,
+                    padding: "1rem",
+                    borderRadius: "0.5rem",
+                    overflowX: "auto",
+                  }}
+                  codeTagProps={{
+                    style: {
+                      fontFamily: "monospace",
+                      fontSize: "0.875rem",
+                    },
+                  }}
+                >
+                  {String(children).replace(/\n$/, "")}
+                </SyntaxHighlighter>
+              </div>
+            ) : (
+              <code {...rest} className={className}>
+                {children}
+              </code>
+            );
+          },
+        }}
+      >
+        {text}
+      </Markdown>
     </div>
   );
 }
@@ -93,10 +207,16 @@ export function Avatar({
 
 export interface BubbleListProps extends React.ComponentProps<"div"> {
   messages: MessageParam[];
-  footer: React.ReactNode;
+  background?: BackgroundType;
+  footer?: React.ReactNode;
 }
 
-export function BubbleList({ className, footer, ...props }: BubbleListProps) {
+export function BubbleList({
+  className,
+  background,
+  footer,
+  ...props
+}: BubbleListProps) {
   const { messages } = props;
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
@@ -141,6 +261,7 @@ export function BubbleList({ className, footer, ...props }: BubbleListProps) {
             <Bubble
               text={message.content}
               align={message.align}
+              background={background}
               ref={index === messages.length - 1 ? lastMessageRef : undefined}
             />
           </div>

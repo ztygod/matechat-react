@@ -46,7 +46,7 @@ export function Chat() {
 
   const onClear = () => {
     setPrompt("");
-    setMessages(initialMessages);
+    setMessages([]);
   };
 
   return (
@@ -54,7 +54,7 @@ export function Chat() {
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
         <main className="flex flex-col items-center justify-center h-[80vh] w-full max-w-3xl p-4 bg-white rounded-lg shadow-md gap-5">
           <BubbleList
-            className="px-4"
+            className="px-4 w-full max-w-full"
             messages={messages}
             footer={
               <Button
@@ -67,7 +67,7 @@ export function Chat() {
               </Button>
             }
           />
-          {messages.length === 2 && (
+          {messages.length === 0 && (
             <Prompts className="mx-10">
               <Prompt size="md" className="max-w-xs">
                 <PromptTitle>

@@ -16,7 +16,15 @@ export default defineConfig({
       treeshake: {
         moduleSideEffects: false,
       },
-      external: ["react", "react-dom", "react/jsx-runtime"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "react-markdown",
+        "react-syntax-highlighter",
+        "remark-gfm",
+        "remark-math",
+      ],
       output: {
         preserveModules: true,
         preserveModulesRoot: path.resolve(__dirname, "src"),
