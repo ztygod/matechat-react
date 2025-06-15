@@ -1,0 +1,24 @@
+name: Build
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: euleros-2.10.1
+    steps:
+      - uses: checkout-action@0.0.1
+      - name: Use Node.js
+        uses: setup-node@0.0.1
+        with:
+          node-version: "20.10.0"
+      - name: Install pnpm
+        run: npm install -g pnpm@10
+      - name: Install dependencies
+        run: cd repo_workspace && pnpm install
+      - name: Build MateChat
+        run: cd repo_workspace && pnpm build
+      - name: Build Playground
+        run: cd repo_workspace && pnpm playground:build
