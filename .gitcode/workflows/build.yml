@@ -15,10 +15,10 @@ jobs:
         with:
           node-version: "20.10.0"
       - name: Install pnpm
-        run: npm install -g pnpm@10 && cd repo_workspace && pnpm install
+        run: npm install -g pnpm@10
       - name: Install dependencies
-        run: cd repo_workspace && pnpm install
+        run: cd repo_workspace && npm install
       - name: Build MateChat
-        run: cd repo_workspace && pnpm build
+        run: cd repo_workspace && npm run build
       - name: Build Playground
-        run: cd repo_workspace && pnpm playground:build
+        run: cd repo_workspace && npm run playground:build
