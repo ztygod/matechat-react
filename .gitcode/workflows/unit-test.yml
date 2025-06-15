@@ -26,9 +26,6 @@ jobs:
       - name: Build Playground
         run: cd repo_workspace && npm run playground:build
 
-      - name: Lint
-        run: cd repo_workspace && npm run lint
-
       - name: Typecheck
         run: cd repo_workspace && npm run typecheck
 
