@@ -20,7 +20,7 @@
     }
   },
   "packages": {
-    "@matechat-react/ui": {
+    "@matechat/react": {
       "path": ".",
       "manager": "javascript"
     }
