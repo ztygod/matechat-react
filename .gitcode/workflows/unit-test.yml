@@ -16,9 +16,21 @@ jobs:
           node-version: "20.10.0"
       - name: Install pnpm
         run: npm install -g pnpm@10
+
       - name: Install dependencies
         run: cd repo_workspace && npm install
+
       - name: Build MateChat
         run: cd repo_workspace && npm run build
+
       - name: Build Playground
         run: cd repo_workspace && npm run playground:build
+
+      - name: Lint
+        run: cd repo_workspace && npm run lint
+
+      - name: Typecheck
+        run: cd repo_workspace && npm run typecheck
+
+      - name: Test
+        run: cd repo_workspace && npm run test
