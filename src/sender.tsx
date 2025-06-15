@@ -1,5 +1,4 @@
 import "./tailwind.css";
-import "@devui-design/icons/icomoon/devui-icon.css";
 
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
