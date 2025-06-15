@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: "20.10.0"
       - name: Install pnpm
-        run: npm install -g pnpm@10
+        run: npm install -g pnpm@10 && cd repo_workspace && pnpm install
       - name: Install dependencies
         run: cd repo_workspace && pnpm install
       - name: Build MateChat
