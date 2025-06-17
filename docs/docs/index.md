@@ -2,16 +2,16 @@
 pageType: home
 
 hero:
-  name: My Site
+  name: Matechat-React
   text: A cool website!
-  tagline: This is the tagline
+  tagline: A frontend AI scenario solution UI library.
   actions:
     - theme: brand
       text: Quick Start
       link: /guide/
     - theme: alt
       text: GitHub
-      link: https://github.com/web-infra-dev/rspress
+      link: https://github.com/DevCloudFE/matechat-react
   image:
     src: /rspress-icon.png
     alt: Logo
