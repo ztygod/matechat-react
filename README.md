@@ -13,13 +13,13 @@
 
 <div align="center">
 
-AI 场景 UI 组件库 · React 版本 · 基于 DevUI 设计体系
+An AI-oriented UI component library for prompt engineering and intelligent interactions, built with React and based on DevUI Design.
 
 <p align="center">
-  <a href="https://matechat.dev">官网</a> •
-  <a href="https://matechat.dev/example">示例</a> •
-  <a href="https://matechat.dev/guide/getting-started">教程</a> •
-  <a href="https://matechat.dev/api">API 文档</a>
+  <a href="https://matechat.dev">Website</a> •
+  <a href="https://matechat.dev/example">Examples</a> •
+  <a href="https://matechat.dev/guide/getting-started">Guide</a> •
+  <a href="https://matechat.dev/api">API</a>
 </p>
 
 ![CI](https://github.com/matechat/matechat-react/actions/workflows/ci.yml/badge.svg)
@@ -31,7 +31,7 @@ AI 场景 UI 组件库 · React 版本 · 基于 DevUI 设计体系
 
 <div align="center">
 
-English | [简体中文](./README.zh-CN.md)
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
 </div>
 
@@ -39,17 +39,17 @@ English | [简体中文](./README.zh-CN.md)
 
 # 📦 Introduction
 
-**MateChat React** 是一套 AI 场景解决方案的前端 UI 组件库，致力于构建智能助手、Prompt 工具、对话系统等智能产品。它是 [MateChat Vue](https://github.com/matechat/matechat-vue) 的 React 平行实现版本。
+**MateChat React** is a React component library designed for AI-driven interfaces, such as chat assistants, prompt tools, agent frameworks, and more. It is the React version of [MateChat Vue](https://github.com/matechat/matechat-vue), offering consistent features and styles.
 
-MateChat 基于 [Huawei DevUI Design](https://devui.design/)，提供一致的视觉风格与灵活的交互能力。
+MateChat is based on [Huawei DevUI Design](https://devui.design/), offering a modern visual language, consistent user experience, and excellent scalability.
 
-## ✨ 特性
+## ✨ Features
 
-- 💡 AI 对话与提示词场景设计
-- 🎨 基于 DevUI 的现代设计体系
-- ⚛️ 原生支持 React + TypeScript
-- 🌙 暗黑/明亮模式自动适配
-- 🔌 高度自定义，支持多种场景扩展
+- 🧠 Built for AI interaction and prompt use-cases
+- 🎨 Based on DevUI design system
+- ⚛️ Fully typed React + TypeScript components
+- 🌗 Built-in light/dark theme switching
+- 🔌 Highly customizable & flexible
 
 ---
 
@@ -72,8 +72,8 @@ function App() {
     <div>
       <ChatPanel
         messages={[
-          { role: 'user', content: '你好，AI！' },
-          { role: 'assistant', content: '您好，有什么我可以帮您的？' }
+          { role: 'user', content: 'Hello, AI!' },
+          { role: 'assistant', content: 'Hi there! How can I help you today?' }
         ]}
       />
       <PromptEditor onSubmit={value => console.log('Prompt:', value)} />
@@ -84,21 +84,21 @@ function App() {
 
 ---
 
-# 🧩 组件列表
+# 🧩 Components
 
-| 组件名             | 描述                                     |
-| ------------------ | ---------------------------------------- |
-| `ChatPanel`        | AI 对话窗口，支持多轮问答、消息历史      |
-| `PromptEditor`     | 提示词输入器，支持多行与预处理能力       |
-| `FunctionSelector` | 智能函数选择器，适用于插件调用场景       |
-| `AgentBadge`       | 多智能体身份标记                         |
-| `MessageCard`      | 卡片式消息组件，适合摘要、搜索类产品展示 |
+| Component          | Description                                   |
+| ------------------ | --------------------------------------------- |
+| `ChatPanel`        | Chat window with multi-turn message support   |
+| `PromptEditor`     | Input field for prompt design                 |
+| `FunctionSelector` | Selectable function list, useful for agents   |
+| `AgentBadge`       | Visual identity badge for AI agents           |
+| `MessageCard`      | Styled message display, perfect for summaries |
 
-更多组件请访问 [组件 API 文档](https://matechat.dev/api)
+Explore more in our [API docs](https://matechat.dev/api)
 
 ---
 
-# 🔧 本地开发
+# 🛠 Development
 
 ```bash
 git clone https://github.com/matechat/matechat-react.git
@@ -107,13 +107,13 @@ pnpm install
 pnpm dev
 ```
 
-启动组件开发：
+Start component development:
 
 ```bash
 pnpm storybook
 ```
 
-打包构建：
+Build the library:
 
 ```bash
 pnpm build
@@ -121,47 +121,47 @@ pnpm build
 
 ---
 
-# 📖 文档站点
+# 📖 Documentation
 
-访问我们的官方文档站点以获取更多示例与指南：
+To explore full tutorials and examples, visit:
 
 👉 [https://matechat.dev](https://matechat.dev)
 
 ---
 
-# 🌍 生态系统
+# 🌱 Ecosystem
 
-| 项目名                 | 描述                           |
-| ---------------------- | ------------------------------ |
-| matechat-vue           | MateChat 的 Vue 版本           |
-| @matechat/react        | 本项目，MateChat 的 React 实现 |
-| matechat-core (计划中) | 核心语义处理与插件平台         |
+| Project             | Description                      |
+| ------------------- | -------------------------------- |
+| matechat-vue        | Vue version of MateChat          |
+| @matechat/react     | React implementation (this repo) |
+| matechat-core (WIP) | Core prompt & agent logic        |
 
 ---
 
-# 📈 使用趋势
+# 📈 Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=matechat/matechat-react\&type=Date)](https://star-history.com/#matechat/matechat-react&Date)
 
 ---
 
-# 🤝 贡献指南
+# 🤝 Contribution
 
-MateChat 是一个社区驱动的开源项目，我们欢迎任何贡献形式：
+We welcome all kinds of contributions:
 
-* 提交 Issue 报告问题或建议
-* Fork 本仓库并提 PR
-* 帮助撰写文档和翻译
+* File issues for bugs or features
+* Create pull requests
+* Help with documentation or translations
 
-请阅读我们的 [贡献指南](./CONTRIBUTING.md) 与 [行为规范](./CODE_OF_CONDUCT.md)。
+Please read our [Contribution Guide](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) before you start.
 
-贡献者列表：
+Contributors:
 
 <a href="https://github.com/matechat/matechat-react/graphs/contributors"><img src="https://contrib.rocks/image?repo=matechat/matechat-react" /></a>
 
 ---
 
 # 📄 License
-[MIT License](./LICENSE) © 2025 MateChat Team
 
+[MIT License](./LICENSE) © 2025 MateChat Team
 
