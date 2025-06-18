@@ -42,7 +42,10 @@ export function Chat() {
   if (!backend) {
     throw new Error("Backend is not initialized");
   }
-  const { messages, input, setMessages } = useChat(backend, initialMessages);
+  const { messages, input, setMessages, isPending } = useChat(
+    backend,
+    initialMessages,
+  );
 
   const onClear = () => {
     setPrompt("");
@@ -57,6 +60,7 @@ export function Chat() {
             className="px-4 w-full max-w-full"
             messages={messages}
             background="right-solid"
+            isPending={isPending}
             footer={
               <Button
                 onClick={onClear}
