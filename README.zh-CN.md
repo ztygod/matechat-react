@@ -1,9 +1,12 @@
 <div align="center">
-  <a href="https://github.com/matechat/matechat-react#gh-light-mode-only" target="_blank">
-    <img alt="MateChat Logo" width="220" src="https://raw.githubusercontent.com/matechat/.github/main/assets/logo_light.svg" />
+  <!-- 亮色模式 logo -->
+  <a href="https://github.com/DevCloudFE#gh-light-mode-only">
+    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-light.svg" alt="DevCloudFE Logo Light" width="200" />
   </a>
-  <a href="https://github.com/matechat/matechat-react#gh-dark-mode-only" target="_blank">
-    <img alt="MateChat Logo" width="220" src="https://raw.githubusercontent.com/matechat/.github/main/assets/logo_dark.svg" />
+
+  <!-- 暗色模式 logo -->
+  <a href="https://github.com/DevCloudFE#gh-dark-mode-only">
+    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-dark.svg" alt="DevCloudFE Logo Dark" width="200" />
   </a>
 </div>
 
@@ -141,7 +144,7 @@ pnpm build
 
 # 📈 使用趋势
 
-[![Star History Chart](https://api.star-history.com/svg?repos=matechat/matechat-react\&type=Date)](https://star-history.com/#matechat/matechat-react&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=DevCloudFE/matechat-react&type=Date)](https://www.star-history.com/#DevCloudFE/matechat-react&Date)
 
 ---
 
@@ -157,7 +160,11 @@ MateChat 是一个社区驱动的开源项目，我们欢迎任何贡献形式�
 
 贡献者列表：
 
-<a href="https://github.com/matechat/matechat-react/graphs/contributors"><img src="https://contrib.rocks/image?repo=matechat/matechat-react" /></a>
+**Contributors:**
+
+<a href="https://github.com/DevCloudFE/matechat-react/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=DevCloudFE/matechat-react" />
+</a>
 
 ---
 
