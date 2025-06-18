@@ -56,6 +56,7 @@ export function Chat() {
           <BubbleList
             className="px-4 w-full max-w-full"
             messages={messages}
+            background="right-solid"
             footer={
               <Button
                 onClick={onClear}

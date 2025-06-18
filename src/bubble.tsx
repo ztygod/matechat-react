@@ -73,17 +73,12 @@ const bubbleVariants = cva(
   },
 );
 
-export type BackgroundType =
-  | "transparent"
-  | "solid"
-  | "left-only"
-  | "right-only";
 /**
  * Props for the Bubble component.
  */
 export interface BubbleProps
   extends React.ComponentProps<"div">,
-    Omit<VariantProps<typeof bubbleVariants>, "background"> {
+    VariantProps<typeof bubbleVariants> {
   /**
    * The text to display in the bubble.
    * @description The content of the bubble, which can include Markdown syntax.
@@ -91,9 +86,9 @@ export interface BubbleProps
   text: string;
   /**
    * Whether to display the background of the bubble.
-   * @default "right-only"
+   * @default "solid"
    */
-  background?: BackgroundType;
+  background?: "transparent" | "solid";
 }
 
 export function Bubble({
@@ -101,7 +96,7 @@ export function Bubble({
   text,
   size,
   align,
-  background = "right-only",
+  background = "solid",
   ...props
 }: BubbleProps) {
   const { isDark } = useTheme();
@@ -115,12 +110,7 @@ export function Bubble({
             className,
             size,
             align,
-            background:
-              background === "solid" ||
-              (background === "left-only" && align === "left") ||
-              (background === "right-only" && align === "right")
-                ? "solid"
-                : "transparent",
+            background,
           }),
         ),
       )}
@@ -207,13 +197,17 @@ export function Avatar({
 
 export interface BubbleListProps extends React.ComponentProps<"div"> {
   messages: MessageParam[];
-  background?: BackgroundType;
+  /**
+   * How to display the background of the bubbles.
+   * @default "right-solid"
+   */
+  background?: "transparent" | "solid" | "left-solid" | "right-solid";
   footer?: React.ReactNode;
 }
 
 export function BubbleList({
   className,
-  background,
+  background = "right-solid",
   footer,
   ...props
 }: BubbleListProps) {
@@ -264,7 +258,13 @@ export function BubbleList({
             <Bubble
               text={message.content}
               align={message.align}
-              background={background}
+              background={
+                (background === "left-solid" && message.align === "left") ||
+                (background === "right-solid" && message.align === "right") ||
+                background === "solid"
+                  ? "solid"
+                  : "transparent"
+              }
               ref={index === messages.length - 1 ? lastMessageRef : undefined}
             />
           </div>
