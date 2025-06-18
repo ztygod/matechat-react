@@ -13,7 +13,7 @@ hero:
       text: GitHub
       link: https://github.com/DevCloudFE/matechat-react
   image:
-    src: /rspress-icon.png
+    src: /metachat-react-logo.png
     alt: Logo
 features:
   - title: Blazing fast build speed
