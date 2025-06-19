@@ -5,8 +5,8 @@ import { Button } from "../../dist/button";
 import {
   Prompt,
   PromptDescription,
-  PromptTitle,
   Prompts,
+  PromptTitle,
 } from "../../dist/prompt";
 import { Sender } from "../../dist/sender";
 import type { MessageParam } from "../../dist/utils";

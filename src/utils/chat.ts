@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { InputOptions } from "./backend";
-import type { Backend, EventTypes, Events, MessageParam } from "./types";
+import type { Backend, Events, EventTypes, MessageParam } from "./types";
 
 export function useChat(
   backend: Backend,
@@ -62,7 +62,7 @@ export function useChat(
           },
         ]);
       }),
-      backend.on("finish", (event) => {
+      backend.on("finish", () => {
         setIsPending(false);
       }),
       backend.on("chunk", (event) => {
