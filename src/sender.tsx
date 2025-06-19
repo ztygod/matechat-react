@@ -46,14 +46,13 @@ export function Sender({
   const [message, setMessage] = useState(initialMessage);
   const [isSending, setIsSending] = useState(false);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: height adjustment
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
-    onMessageChange?.(message || "");
-  }, [message]);
+    onMessageChange?.(message);
+  }, [message, onMessageChange]);
 
   const [controller, setController] = useState<AbortController | null>(null);
   const handleSend = () => {
