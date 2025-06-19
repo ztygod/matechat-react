@@ -7,10 +7,31 @@ import PublishNew from "./icons/publish-new.svg";
 import QuickStop from "./icons/quick-stop.svg";
 import type { Backend } from "./utils";
 
+export interface SenderButtonProps extends React.ComponentProps<"button"> {
+  /**
+   * Icon to display in the button.
+   *
+   * Defaults to a send icon when `isSending` is false,
+   * and a stop icon when `isSending` is true. The icon
+   * will be overridden if provided.
+   */
+  icon?: React.ReactNode;
+  /**
+   * Whether runtime is currently sending a message.
+   *
+   * If true, the button will display a stop icon
+   * instead of the send icon.
+   *
+   * @default false
+   */
+  isSending?: boolean;
+}
 export function SenderButton({
   className,
+  icon,
+  isSending = false,
   ...props
-}: React.ComponentProps<"button">) {
+}: SenderButtonProps) {
   return (
     <button
       type="button"
@@ -22,15 +43,48 @@ export function SenderButton({
         ),
       )}
       {...props}
-    />
+    >
+      {icon ?? (
+        <img
+          className="filter brightness-0 invert"
+          src={isSending ? QuickStop : PublishNew}
+          alt={isSending ? "icon-quick-stop" : "icon-publish-new"}
+        />
+      )}
+    </button>
   );
 }
 
+/**
+ * Props for the message sender component.
+ * @extends React.ComponentProps<"div">
+ */
 export interface SenderProps extends React.ComponentProps<"div"> {
+  /**
+   * Initial message to display in the input field.
+   * @default ""
+   */
   initialMessage?: string;
+  /**
+   * Placeholder text for the input field.
+   * @default "Type your message here..."
+   */
   placeholder?: string;
+  /**
+   * Function to handle input changes.
+   */
   input: Backend["input"];
+  /**
+   * Function to handle message changes.
+   * @param message - The new message.
+   */
   onMessageChange?: (message: string) => void;
+  /**
+   * Function to handle the send action.
+   * This function is called when the send button is clicked.
+   * It receives an AbortController that can be used to abort the request.
+   * @param controller - The AbortController to abort the request.
+   */
   onSend?: (controller: AbortController) => void;
 }
 export function Sender({
@@ -111,21 +165,7 @@ export function Sender({
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">{message.length} / 500</span>
         </div>
-        <SenderButton onClick={handleSend}>
-          {isSending ? (
-            <img
-              className="filter brightness-0 invert"
-              src={QuickStop}
-              alt="icon-quick-stop"
-            />
-          ) : (
-            <img
-              className="filter brightness-0 invert"
-              src={PublishNew}
-              alt="icon-publish-new"
-            />
-          )}
-        </SenderButton>
+        <SenderButton onClick={handleSend} isSending={isSending} />
       </div>
     </div>
   );
