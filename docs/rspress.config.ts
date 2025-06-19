@@ -9,6 +9,22 @@ export default defineConfig({
     light: '/rspress-light-logo.png',
     dark: '/rspress-dark-logo.png',
   },
+  lang: 'en',
+  locales: [
+    {
+      lang: 'en',
+      // 导航栏切换语言的标签
+      label: 'English',
+      title: 'Rspress',
+      description: 'Static Site Generator',
+    },
+    {
+      lang: 'zh',
+      label: '简体中文',
+      title: 'Rspress',
+      description: '静态网站生成器',
+    },
+  ],
   themeConfig: {
     socialLinks: [
       {
