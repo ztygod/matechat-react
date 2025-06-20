@@ -36,6 +36,13 @@ export default defineConfig({
             );
             return path.join("modules", relativePath);
           }
+          if (info.facadeModuleId?.includes("src")) {
+            const idx = info.facadeModuleId.lastIndexOf("src");
+            const relativeDir = path.dirname(info.facadeModuleId.slice(
+              idx + "src/".length,
+            ));
+            return path.join(relativeDir, `${info.name}.js`)
+          }
           return "[name].js";
         },
         chunkFileNames: "[name]-[hash].js",
