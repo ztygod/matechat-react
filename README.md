@@ -1,14 +1,14 @@
-<div align="center">
+<!-- <div align="center"> -->
   <!-- 亮色模式 logo -->
-  <a href="https://github.com/DevCloudFE#gh-light-mode-only">
+  <!-- <a href="https://github.com/DevCloudFE#gh-light-mode-only">
     <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-light.svg" alt="DevCloudFE Logo Light" width="200" />
-  </a>
+  </a> -->
 
   <!-- 暗色模式 logo -->
-  <a href="https://github.com/DevCloudFE#gh-dark-mode-only">
+  <!-- <a href="https://github.com/DevCloudFE#gh-dark-mode-only">
     <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-dark.svg" alt="DevCloudFE Logo Dark" width="200" />
   </a>
-</div>
+</div> -->
 
 <div align="center">
   <h1>MateChat React</h1>
