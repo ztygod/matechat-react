@@ -10,6 +10,11 @@
     "activeMatch": "/hello/"
   },
   {
+    "text": "组件演示",
+    "link": "/display/",
+    "activeMatch": "/display/"
+  },
+  {
     "text": "API",
     "link": "https://rspress.dev/api/index.html"
   }
