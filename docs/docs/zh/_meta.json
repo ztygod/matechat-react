@@ -1,13 +1,8 @@
 [
   {
-    "text": "guide",
-    "link": "/guide/",
+    "text": "指南",
+    "link": "/guide/start/introduction",
     "activeMatch": "/guide/"
-  },
-  {
-    "text": "Hello world",
-    "link": "/hello/",
-    "activeMatch": "/hello/"
   },
   {
     "text": "组件演示",
@@ -15,7 +10,26 @@
     "activeMatch": "/display/"
   },
   {
+    "text": "插件",
+    "link": "/plugin/system/introduction",
+    "activeMatch": "/plugin/"
+  },
+  {
     "text": "API",
-    "link": "https://rspress.dev/api/index.html"
+    "link": "/api/",
+    "activeMatch": "/api/"
+  },
+  {
+    "text": "版本",
+    "items": [
+      {
+        "text": "更新日志",
+        "link": "https://github.com/web-infra-dev/rspress/releases"
+      },
+      {
+        "text": "Rspress 1.x 文档",
+        "link": "http://rspress.rs/zh/"
+      }
+    ]
   }
 ]
