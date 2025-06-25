@@ -11,7 +11,7 @@ hero:
       link: /zh/guide/
     - theme: alt
       text: GitHub
-      link: https://github.com/ztygod/matechat-react
+      link: https://github.com/DevCloudFE/MateChat
   image:
     src: /rspress-icon.png
     alt: MateChat 标志
