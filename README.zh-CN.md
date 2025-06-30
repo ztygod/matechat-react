@@ -67,19 +67,24 @@ pnpm add @matechat/react
 ```
 
 ```tsx
-import React from 'react';
-import { ChatPanel, PromptEditor } from '@matechat/react';
+import { Bubble } from '@matechat/react';
+import avatar from './avatar.png';
 
-function App() {
+export default function BubbleDemo() {
   return (
-    <div>
-      <ChatPanel
-        messages={[
-          { role: 'user', content: '你好，AI！' },
-          { role: 'assistant', content: '您好，有什么我可以帮您的？' }
-        ]}
-      />
-      <PromptEditor onSubmit={value => console.log('Prompt:', value)} />
+    <div className="bubble-chat">
+      <div className="bubble-row left">
+        <img src={avatar} alt="Bot" className="avatar" />
+        <Bubble text="您好，请问有什么可以帮您？" />
+      </div>
+      <div className="bubble-row right">
+        <Bubble text="我想了解一下产品功能！" />
+        <img src={avatar} alt="User" className="avatar" />
+      </div>
+      <div className="bubble-row left">
+        <img src={avatar} alt="Bot" className="avatar" />
+        <Bubble text="好的，请稍等..." isPending />
+      </div>
     </div>
   );
 }
