@@ -1,6 +1,6 @@
 import "./tailwind.css";
 
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 import type * as React from "react";
 import { twMerge } from "tailwind-merge";

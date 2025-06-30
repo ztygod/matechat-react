@@ -2,7 +2,7 @@ import { execSync, spawn } from "node:child_process";
 import fs, { type WatchEventType } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { type ProgressBar, createSpinner } from "archons";
+import { createSpinner, type ProgressBar } from "archons";
 import chalk from "chalk";
 
 function isIgnored(filename: string) {
@@ -69,7 +69,7 @@ console.log(`${greenPrefix} Build complete.\n`);
 console.log(`${greenPrefix} Watching on ${displayPaths} for changes...`);
 
 function watch() {
-  function useDevProcess() {
+  function createDevProcess() {
     let devProcess = spawn(
       "pnpm",
       ["run", "--silent", "preview", "--clearScreen", "false"],
@@ -98,7 +98,7 @@ function watch() {
       });
     };
   }
-  const restartServer = useDevProcess();
+  const restartServer = createDevProcess();
 
   function rebuild(
     command: string,

@@ -5,8 +5,8 @@ import { Button } from "../../dist/button";
 import {
   Prompt,
   PromptDescription,
-  PromptTitle,
   Prompts,
+  PromptTitle,
 } from "../../dist/prompt";
 import { Sender } from "../../dist/sender";
 import type { MessageParam } from "../../dist/utils";
@@ -42,7 +42,10 @@ export function Chat() {
   if (!backend) {
     throw new Error("Backend is not initialized");
   }
-  const { messages, input, setMessages } = useChat(backend, initialMessages);
+  const { messages, input, setMessages, isPending } = useChat(
+    backend,
+    initialMessages,
+  );
 
   const onClear = () => {
     setPrompt("");
@@ -56,6 +59,8 @@ export function Chat() {
           <BubbleList
             className="px-4 w-full max-w-full"
             messages={messages}
+            background="right-solid"
+            isPending={isPending}
             footer={
               <Button
                 onClick={onClear}

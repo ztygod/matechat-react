@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { InputOptions } from "./backend";
-import type { Backend, EventTypes, Events, MessageParam } from "./types";
+import type { Backend, Events, EventTypes, MessageParam } from "./types";
 
 export function useChat(
   backend: Backend,
@@ -10,10 +10,13 @@ export function useChat(
   input: (prompt: string, options?: InputOptions) => Promise<void>;
   on: <K extends EventTypes["type"]>(type: K, handler: Events[K]) => () => void;
   setMessages: React.Dispatch<React.SetStateAction<MessageParam[]>>;
+  isPending: boolean;
 } {
   const [messages, setMessages] = useState<MessageParam[]>(initialMessages);
+  const [isPending, setIsPending] = useState(false);
 
   const input = async (prompt: string, options?: InputOptions) => {
+    setIsPending(true);
     return backend.input(prompt, {
       messages,
       ...options,
@@ -47,6 +50,7 @@ export function useChat(
         setMessages((prevMessages) => [...prevMessages, event.payload]);
       }),
       backend.on("error", (event) => {
+        setIsPending(false);
         console.error("Error from backend:", event.payload.error);
         setMessages((prevMessages) => [
           ...prevMessages,
@@ -58,7 +62,11 @@ export function useChat(
           },
         ]);
       }),
+      backend.on("finish", () => {
+        setIsPending(false);
+      }),
       backend.on("chunk", (event) => {
+        setIsPending(false);
         setMessages((prev) => {
           const lastMessage = prev[prev.length - 1];
           if (lastMessage && lastMessage.role === "assistant") {
@@ -92,5 +100,5 @@ export function useChat(
     };
   }, [backend]);
 
-  return { messages, input, on, setMessages };
+  return { messages, input, on, setMessages, isPending };
 }
