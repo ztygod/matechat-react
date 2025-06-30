@@ -149,7 +149,7 @@ export function Sender({
       data-slot="sender"
       className={twMerge(
         clsx(
-          "flex flex-col items-center gap-4 border border-gray-200 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500",
+          "flex flex-col items-center border border-gray-200 rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500",
           className,
         ),
       )}
@@ -161,8 +161,8 @@ export function Sender({
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        className="w-full py-4 px-4 border-0 rounded-2xl resize-none focus:ring-0 focus:outline-none text-gray-700 placeholder-gray-400"
-        rows={1}
+        className="w-full pt-4 px-4 border-0 rounded-2xl resize-none focus:ring-0 focus:outline-none text-gray-700 placeholder-gray-400"
+        rows={2}
       />
       <div className="flex items-center justify-between w-full px-4 py-2">
         <div className="flex items-center gap-2">
