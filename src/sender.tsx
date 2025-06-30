@@ -1,7 +1,7 @@
 import "./tailwind.css";
 
 import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import PublishNew from "./icons/publish-new.svg";
 import QuickStop from "./icons/quick-stop.svg";
@@ -109,7 +109,7 @@ export function Sender({
   }, [message, onMessageChange]);
 
   const [controller, setController] = useState<AbortController | null>(null);
-  const handleSend = () => {
+  const handleSend = useCallback(() => {
     if (isSending) {
       setIsSending(false);
       return controller?.abort();
@@ -133,13 +133,16 @@ export function Sender({
     } else {
       onSend?.(newController);
     }
-  };
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault();
-      handleSend();
-    }
-  };
+  }, [isSending, message, onSend, controller, input]);
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        handleSend();
+      }
+    },
+    [handleSend],
+  );
 
   return (
     <div
