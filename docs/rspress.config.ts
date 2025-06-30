@@ -1,9 +1,13 @@
 import * as path from 'node:path';
 import { defineConfig } from 'rspress/config';
+import { pluginPlayground } from '@rspress/plugin-playground';
 
 export default defineConfig({
+  plugins: [
+    pluginPlayground()
+  ],
   root: path.join(__dirname, 'docs'),
-  title: 'My Site',
+  title: 'MetaChat React',
   icon: '/rspress-icon.png',
   logo: {
     light: '/rspress-light-logo.png',
@@ -34,4 +38,13 @@ export default defineConfig({
       },
     ],
   },
+  builderConfig: {
+    resolve: {
+      alias: process.env.LOCAL ? {
+        '@matechat/react': path.resolve(__dirname, './src'),
+      } : {},
+    },
+  },
+  // 引入全局样式
+  globalStyles: path.resolve(__dirname, './docs/style.css'),
 });

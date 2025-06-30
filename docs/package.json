@@ -5,14 +5,17 @@
   "scripts": {
     "build": "rspress build",
     "dev": "rspress dev",
+    "dev:local": "cross-env LOCAL=1 rspress dev",
     "format": "prettier --write .",
     "preview": "rspress preview"
   },
   "dependencies": {
+    "@rspress/plugin-playground": "^1.44.0",
     "rspress": "^1.40.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.17",
+    "cross-env": "^7.0.3",
     "prettier": "^3.4.2"
   }
 }
