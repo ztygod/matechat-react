@@ -40,7 +40,8 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "format": "biome format . --write",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "sync:changelog": "tsx scripts/sync-changelog.ts"
   },
   "peerDependencies": {
     "react": "^19.1.0",

@@ -6,12 +6,12 @@
   },
   {
     "type": "dir",
-    "name": "basic",
-    "label": "features"
+    "name": "model-docking",
+    "label": "model-docking"
   },
   {
     "type": "dir",
-    "name": "advanced",
-    "label": "advanced"
+    "name": "other",
+    "label": "other"
   }
 ]

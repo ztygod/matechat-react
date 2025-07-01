@@ -12,18 +12,18 @@ export default defineConfig({
   title: 'MetaChat React',
   icon: '/rspress-icon.png',
   logo: {
-    light: '/rspress-light-logo.png',
-    dark: '/rspress-dark-logo.png',
+    light: '/matechat-react-logo.png',
+    dark: '/matechat-react-logo.png',
   },
-  lang: 'en',
+  lang: 'zh',
   locales: [
-    {
-      lang: 'en',
-      // 导航栏切换语言的标签
-      label: 'English',
-      title: 'Rspress',
-      description: 'Static Site Generator',
-    },
+    // {
+    //   lang: 'en',
+    //   // 导航栏切换语言的标签
+    //   label: 'English',
+    //   title: 'Rspress',
+    //   description: 'Static Site Generator',
+    // },
     {
       lang: 'zh',
       label: '简体中文',
@@ -36,7 +36,7 @@ export default defineConfig({
       {
         icon: 'github',
         mode: 'link',
-        content: 'https://github.com/web-infra-dev/rspress',
+        content: 'https://github.com/DevCloudFE/matechat-react',
       },
     ],
   },

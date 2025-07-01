@@ -8,12 +8,12 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /zh/guide/
+      link: guide/start/introduction
     - theme: alt
       text: GitHub
-      link: https://github.com/DevCloudFE/MateChat
+      link: https://github.com/DevCloudFE/matechat-react
   image:
-    src: /rspress-icon.png
+    src: https://avatars.githubusercontent.com/u/49863837?s=170&v=4
     alt: MateChat 标志
 
 features:
