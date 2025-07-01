@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const changelogPath = path.resolve(__dirname, '../CHANGELOG.md');
-const targetPath = path.resolve(__dirname, '../docs/docs/zh/guide/basic/update-log.md');
+const targetPath = path.resolve(__dirname, '../docs/docs/zh/guide/other/update-log.md');
 
 function syncChangelog() {
   const changelog = fs.readFileSync(changelogPath, 'utf-8');

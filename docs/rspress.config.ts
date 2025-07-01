@@ -9,8 +9,8 @@ export default defineConfig({
     require('autoprefixer'),
   ],
   root: path.join(__dirname, 'docs'),
-  title: 'MetaChat React',
-  icon: '/rspress-icon.png',
+  title: 'MateChat React',
+  icon: '/matechat-react-logo.png',
   logo: {
     light: '/matechat-react-logo.png',
     dark: '/matechat-react-logo.png',

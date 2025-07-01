@@ -13,7 +13,7 @@ hero:
       text: GitHub
       link: https://github.com/ztygod/matechat-react
   image:
-    src: /rspress-icon.png
+    src: /matechat-react-logo.png
     alt: MateChat Logo
 
 features:
