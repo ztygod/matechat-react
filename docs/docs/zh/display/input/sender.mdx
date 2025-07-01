@@ -29,8 +29,9 @@ const fakeBackend = {
 
 export default function SenderDemo() {
   return (
-    <div style={{ maxWidth: 500, margin: "2rem auto" }}>
+    <div>
       <Sender
+        className='w-full'
         initialMessage="Hello, MateChat!"
         placeholder="输入消息，按 Enter 发送"
         input={fakeBackend.input}
@@ -108,18 +109,22 @@ export default function SenderPlayground() {
         }}
       />
 
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <strong>状态:</strong> {isSending ? "发送中..." : "空闲"}
       </div>
       <div className="mb-4">
         <strong>最近发送消息:</strong> {lastMessage || "无"}
-      </div>
+      </div> */}
+      
+      <div className="mb-4" style={{display: "flex",margin: "2rem auto"}}>
+        <strong style={{marginRight: "10px"}}> Sender 按钮 </strong>
 
-      <SenderButton
-        isSending={isSending}
-        onClick={handleSendClick}
-        aria-label={isSending ? "停止发送" : "发送"}
-      />
+        <SenderButton
+          isSending={isSending}
+          onClick={handleSendClick}
+          aria-label={isSending ? "停止发送" : "发送"}
+        />
+      </div>
     </div>
   );
 }

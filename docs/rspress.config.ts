@@ -4,7 +4,9 @@ import { pluginPlayground } from '@rspress/plugin-playground';
 
 export default defineConfig({
   plugins: [
-    pluginPlayground()
+    pluginPlayground(),
+    require('@tailwindcss/postcss'),
+    require('autoprefixer'),
   ],
   root: path.join(__dirname, 'docs'),
   title: 'MetaChat React',
@@ -47,4 +49,5 @@ export default defineConfig({
   },
   // 引入全局样式
   globalStyles: path.resolve(__dirname, './docs/style.css'),
+  mediumZoom: false,
 });

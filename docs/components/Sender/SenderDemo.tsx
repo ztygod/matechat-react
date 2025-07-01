@@ -1,6 +1,5 @@
-import React from "react";
-import { Sender } from "@matechat/react"; // 假设 Sender 代码在同目录 Sender.tsx
-
+import { Sender } from "@matechat/react"; 
+import '../../docs/style.css'
 // 模拟后端接口类型
 const fakeBackend = {
   input: (message: string, options: { callbacks: { onFinish: () => void }; signal: AbortSignal }) => {
