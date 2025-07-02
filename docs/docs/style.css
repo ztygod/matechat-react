@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 /* 组件容器 */
 .playground-wrapper {
     background: #f9fafb;
@@ -75,7 +73,6 @@ textarea {
     --radius-lg: 0.5rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    -webkit-text-size-adjust: 100%;
     tab-size: 4;
     -webkit-tap-highlight-color: transparent;
     --tw-duration: .3s;
@@ -100,7 +97,3 @@ textarea {
     height: 56px;
     overflow-y: hidden;
 }  
-
-/* button {
-    color: white;
-} */

@@ -5,8 +5,6 @@ import { pluginPlayground } from '@rspress/plugin-playground';
 export default defineConfig({
   plugins: [
     pluginPlayground(),
-    require('@tailwindcss/postcss'),
-    require('autoprefixer'),
   ],
   root: path.join(__dirname, 'docs'),
   title: 'MateChat React',
@@ -43,9 +41,9 @@ export default defineConfig({
   },
   builderConfig: {
     resolve: {
-      alias: process.env.LOCAL ? {
-        '@matechat/react': path.resolve(__dirname, './src'),
-      } : {},
+      alias:  {
+        '@matechat/react': path.resolve(__dirname, '../dist'),
+      },
     },
   },
   // 引入全局样式

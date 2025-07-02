@@ -35,6 +35,7 @@
     "lint:fix": "pnpm run lint --fix",
     "build": "vite build",
     "dev": "tsx scripts/watch.ts",
+    "docs:dev": "tsx scripts/docs-watch.ts",
     "playground:build": "vite build --config playground/vite.config.ts",
     "preview": "vite --config playground/vite.config.ts",
     "test": "vitest",
@@ -50,7 +51,6 @@
     "react-syntax-highlighter": "^15.5.13"
   },
   "dependencies": {
-    "@matechat/react": "0.1.0-alpha.4",
     "@tailwindcss/vite": "^4.1.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

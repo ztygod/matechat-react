@@ -20,10 +20,10 @@ export default function SenderDemo() {
         initialMessage="Hello, MateChat!"
         placeholder="输入消息，按 Enter 发送"
         input={fakeBackend.input}
-        onMessageChange={(msg) => {
+        onMessageChange={(msg: string) => {
           console.log("内容变化:", msg);
         }}
-        onSend={(controller) => {
+        onSend={(controller:any) => {
           console.log("消息发送开始，AbortController 可用于取消请求", controller);
         }}
       />

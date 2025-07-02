@@ -5,7 +5,6 @@
   "scripts": {
     "build": "rspress build",
     "dev": "rspress dev",
-    "dev:local": "cross-env LOCAL=1 rspress dev",
     "format": "prettier --write .",
     "preview": "rspress preview"
   },

@@ -10,7 +10,6 @@ npm install --save @matechat/react
 pnpm add @matechat/react
 ```
 
----
 
 ## 基本用法
 
