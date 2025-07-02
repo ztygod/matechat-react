@@ -17,6 +17,7 @@ export default defineConfig({
   },
   lang: 'zh',
   locales: [
+    // todo: 待开发英文文档
     // {
     //   lang: 'en',
     //   // 导航栏切换语言的标签
