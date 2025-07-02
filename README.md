@@ -1,31 +1,12 @@
-<!-- <div align="center"> -->
-  <!-- 亮色模式 logo -->
-  <!-- <a href="https://github.com/DevCloudFE#gh-light-mode-only">
-    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-light.svg" alt="DevCloudFE Logo Light" width="200" />
-  </a> -->
-
-  <!-- 暗色模式 logo -->
-  <!-- <a href="https://github.com/DevCloudFE#gh-dark-mode-only">
-    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-dark.svg" alt="DevCloudFE Logo Dark" width="200" />
-  </a>
-</div> -->
-
 <div align="center">
   <h1>MateChat React</h1>
 </div>
 
 <div align="center">
 
-An AI-oriented UI component library for prompt engineering and intelligent interactions, built with React and based on DevUI Design.
+MateChat React is the React version of [MateChat](https://github.com/DevCloudFE/MateChat), a front-end AI scenario solution UI library based on Huawei DevUI Design.
 
-<p align="center">
-  <a href="https://matechat.dev">Website</a> •
-  <a href="https://matechat.dev/example">Examples</a> •
-  <a href="https://matechat.dev/guide/getting-started">Guide</a> •
-  <a href="https://matechat.dev/api">API</a>
-</p>
 
-![CI](https://github.com/matechat/matechat-react/actions/workflows/ci.yml/badge.svg)
 [![npm Version](https://img.shields.io/npm/v/@matechat/react.svg)](https://www.npmjs.com/package/@matechat/react)
 [![npm Downloads](https://img.shields.io/npm/dm/@matechat/react.svg)](https://www.npmjs.com/package/@matechat/react)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
@@ -40,13 +21,13 @@ An AI-oriented UI component library for prompt engineering and intelligent inter
 
 ---
 
-# 📦 Introduction
+## Introduction
 
-**MateChat React** is a React component library designed for AI-driven interfaces, such as chat assistants, prompt tools, agent frameworks, and more. It is the React version of [MateChat Vue](https://github.com/matechat/matechat-vue), offering consistent features and styles.
+**MateChat React** is a React component library designed for AI-driven interfaces, such as chat assistants, prompt tools, agent frameworks, and more. It is the React version of [MateChat](https://github.com/DevCloudFE/MateChat), offering consistent features and styles.
 
 MateChat is based on [Huawei DevUI Design](https://devui.design/), offering a modern visual language, consistent user experience, and excellent scalability.
 
-## ✨ Features
+## Features
 
 - 🧠 Built for AI interaction and prompt use-cases
 - 🎨 Based on DevUI design system
@@ -56,7 +37,7 @@ MateChat is based on [Huawei DevUI Design](https://devui.design/), offering a mo
 
 ---
 
-# 🚀 Quick Start
+## Quick Start
 
 ```bash
 # npm
@@ -75,15 +56,15 @@ export default function BubbleDemo() {
     <div className="bubble-chat">
       <div className="bubble-row left">
         <img src={avatar} alt="Bot" className="avatar" />
-        <Bubble text="您好，请问有什么可以帮您？" />
+        <Bubble text="Hello, how can I help you?" />
       </div>
       <div className="bubble-row right">
-        <Bubble text="我想了解一下产品功能！" />
+        <Bubble text="I want to know the product features!" />
         <img src={avatar} alt="User" className="avatar" />
       </div>
       <div className="bubble-row left">
         <img src={avatar} alt="Bot" className="avatar" />
-        <Bubble text="好的，请稍等..." isPending />
+        <Bubble text="OK, please wait..." isPending />
       </div>
     </div>
   );
@@ -92,33 +73,13 @@ export default function BubbleDemo() {
 
 ---
 
-# 🧩 Components
-
-| Component          | Description                                   |
-| ------------------ | --------------------------------------------- |
-| `ChatPanel`        | Chat window with multi-turn message support   |
-| `PromptEditor`     | Input field for prompt design                 |
-| `FunctionSelector` | Selectable function list, useful for agents   |
-| `AgentBadge`       | Visual identity badge for AI agents           |
-| `MessageCard`      | Styled message display, perfect for summaries |
-
-Explore more in our [API docs](https://matechat.dev/api)
-
----
-
-# 🛠 Development
+## Development
 
 ```bash
 git clone https://github.com/matechat/matechat-react.git
 cd matechat-react
 pnpm install
 pnpm dev
-```
-
-Start component development:
-
-```bash
-pnpm storybook
 ```
 
 Build the library:
@@ -129,25 +90,15 @@ pnpm build
 
 ---
 
-# 📖 Documentation
+## Documentation
 
-To explore full tutorials and examples, visit:
+The documentation is still in progress, but you can feel free to create a new issue in [GitCode](https://gitcode.com/DevCloudFE/MateChat/issues) or [GitHub](https://github.com/DevCloudFE/MateChat/issues) to submit your questions or suggestions. This project is still under development, so the documentation is not complete yet, some features may change in the future.
 
-👉 [https://matechat.dev](https://matechat.dev)
+For more information, please track the progress in [#4](https://github.com/DevCloudFE/matechat-react/issues/4) and [#5](https://github.com/DevCloudFE/MateChat/issues/5).
 
----
 
-# 🌱 Ecosystem
 
-| Project             | Description                      |
-| ------------------- | -------------------------------- |
-| matechat-vue        | Vue version of MateChat          |
-| @matechat/react     | React implementation (this repo) |
-| matechat-core (WIP) | Core prompt & agent logic        |
 
----
-
-# 📈 Star History
 
 ## Star History
 
@@ -155,7 +106,7 @@ To explore full tutorials and examples, visit:
 
 ---
 
-# 🤝 Contribution
+## Contribution
 
 We welcome all kinds of contributions:
 
@@ -163,7 +114,6 @@ We welcome all kinds of contributions:
 * Create pull requests
 * Help with documentation or translations
 
-Please read our [Contribution Guide](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) before you start.
 
 **Contributors:**
 
@@ -173,7 +123,12 @@ Please read our [Contribution Guide](./CONTRIBUTING.md) and [Code of Conduct](./
 
 ---
 
-# 📄 License
+## Contact Us
 
-[MIT License](./LICENSE) © 2025 MateChat Team
+|                                              MateChat React Chat Group                                               |                                         SOA Chat Group                                          |
+| :------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
+| [<img alt="MateChat React Chat Group" src="./assets/matechat-react-qq-group.jpg" />](https://qm.qq.com/q/aMLehEXzBm) | [<img alt="SOAt Chat Group" src="./assets/soa-qq-group.jpg" />](https://qm.qq.com/q/lOocKriX74) |
 
+## License
+
+This project is licensed under the [MIT License](./LICENSE).

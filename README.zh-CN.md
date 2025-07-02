@@ -1,31 +1,13 @@
-<!-- <div align="center"> -->
-  <!-- 亮色模式 logo -->
-  <!-- <a href="https://github.com/DevCloudFE#gh-light-mode-only">
-    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-light.svg" alt="DevCloudFE Logo Light" width="200" />
-  </a> -->
-
-  <!-- 暗色模式 logo -->
-  <!-- <a href="https://github.com/DevCloudFE#gh-dark-mode-only">
-    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-dark.svg" alt="DevCloudFE Logo Dark" width="200" />
-  </a>
-</div> -->
-
 <div align="center">
   <h1>MateChat React</h1>
 </div>
 
 <div align="center">
 
-AI 场景 UI 组件库 · React 版本 · 基于 DevUI 设计体系
+MateChat React 是 [MateChat](https://github.com/DevCloudFE/MateChat) 的 React 版本，
+它是一个基于华为 DevUI 设计的前端 AI 场景解决方案 UI 库。
 
-<p align="center">
-  <a href="https://matechat.dev">官网</a> •
-  <a href="https://matechat.dev/example">示例</a> •
-  <a href="https://matechat.dev/guide/getting-started">教程</a> •
-  <a href="https://matechat.dev/api">API 文档</a>
-</p>
 
-![CI](https://github.com/matechat/matechat-react/actions/workflows/ci.yml/badge.svg)
 [![npm Version](https://img.shields.io/npm/v/@matechat/react.svg)](https://www.npmjs.com/package/@matechat/react)
 [![npm Downloads](https://img.shields.io/npm/dm/@matechat/react.svg)](https://www.npmjs.com/package/@matechat/react)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
@@ -40,23 +22,25 @@ AI 场景 UI 组件库 · React 版本 · 基于 DevUI 设计体系
 
 ---
 
-# 📦 Introduction
+## 介绍
 
-**MateChat React** 是一套 AI 场景解决方案的前端 UI 组件库，致力于构建智能助手、Prompt 工具、对话系统等智能产品。它是 [MateChat Vue](https://github.com/matechat/matechat-vue) 的 React 平行实现版本。
+**MateChat React** 是一个专为 AI 场景打造的 React 组件库，适用于聊天助手、提示工程工具、Agent 框架等场景。  这是 [MateChat](https://github.com/DevCloudFE/MateChat) 的 React 版本，保持一致的功能与风格。
 
-MateChat 基于 [Huawei DevUI Design](https://devui.design/)，提供一致的视觉风格与灵活的交互能力。
-
-## ✨ 特性
-
-- 💡 AI 对话与提示词场景设计
-- 🎨 基于 DevUI 的现代设计体系
-- ⚛️ 原生支持 React + TypeScript
-- 🌙 暗黑/明亮模式自动适配
-- 🔌 高度自定义，支持多种场景扩展
+MateChat 基于 [华为 DevUI Design](https://devui.design/)，提供现代视觉语言、一致的用户体验以及良好的可扩展性。
 
 ---
 
-# 🚀 Quick Start
+## 特性
+
+- 🧠 为 AI 交互和提示工程设计
+- 🎨 基于 DevUI 设计体系
+- ⚛️ 完全基于 TypeScript 类型支持
+- 🌗 内置浅色/深色主题切换
+- 🔌 高度可定制与灵活性
+
+---
+
+## 快速开始
 
 ```bash
 # npm
@@ -90,23 +74,8 @@ export default function BubbleDemo() {
 }
 ```
 
----
 
-# 🧩 组件列表
-
-| 组件名             | 描述                                     |
-| ------------------ | ---------------------------------------- |
-| `ChatPanel`        | AI 对话窗口，支持多轮问答、消息历史      |
-| `PromptEditor`     | 提示词输入器，支持多行与预处理能力       |
-| `FunctionSelector` | 智能函数选择器，适用于插件调用场景       |
-| `AgentBadge`       | 多智能体身份标记                         |
-| `MessageCard`      | 卡片式消息组件，适合摘要、搜索类产品展示 |
-
-更多组件请访问 [组件 API 文档](https://matechat.dev/api)
-
----
-
-# 🔧 本地开发
+## 本地开发
 
 ```bash
 git clone https://github.com/matechat/matechat-react.git
@@ -115,13 +84,7 @@ pnpm install
 pnpm dev
 ```
 
-启动组件开发：
-
-```bash
-pnpm storybook
-```
-
-打包构建：
+构建组件库：
 
 ```bash
 pnpm build
@@ -129,43 +92,30 @@ pnpm build
 
 ---
 
-# 📖 文档站点
+## 文档
 
-访问我们的官方文档站点以获取更多示例与指南：
+文档仍在完善中，如果有任何疑问或建议，欢迎在 [GitCode](https://gitcode.com/DevCloudFE/MateChat/issues) 或 [GitHub](https://github.com/DevCloudFE/MateChat/issues) 提 issue。
+由于项目仍在开发中，部分功能和文档可能会有调整。
 
-👉 [https://matechat.dev](https://matechat.dev)
-
----
-
-# 🌍 生态系统
-
-| 项目名                 | 描述                           |
-| ---------------------- | ------------------------------ |
-| matechat-vue           | MateChat 的 Vue 版本           |
-| @matechat/react        | 本项目，MateChat 的 React 实现 |
-| matechat-core (计划中) | 核心语义处理与插件平台         |
+可关注进展：[#4](https://github.com/DevCloudFE/matechat-react/issues/4) 和 [#5](https://github.com/DevCloudFE/MateChat/issues/5)。
 
 ---
 
-# 📈 使用趋势
+## Star 趋势
 
-[![Star History Chart](https://api.star-history.com/svg?repos=DevCloudFE/matechat-react&type=Date)](https://www.star-history.com/#DevCloudFE/matechat-react&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=DevCloudFE/matechat-react\&type=Date)](https://www.star-history.com/#DevCloudFE/matechat-react&Date)
 
 ---
 
-# 🤝 贡献指南
+## 如何贡献
 
-MateChat 是一个社区驱动的开源项目，我们欢迎任何贡献形式：
+我们欢迎各种形式的贡献：
 
-* 提交 Issue 报告问题或建议
-* Fork 本仓库并提 PR
-* 帮助撰写文档和翻译
+* 提交 bug 或需求 issue
+* 创建 pull request
+* 帮助完善文档或翻译
 
-请阅读我们的 [贡献指南](./CONTRIBUTING.md) 与 [行为规范](./CODE_OF_CONDUCT.md)。
-
-贡献者列表：
-
-**Contributors:**
+**贡献者：**
 
 <a href="https://github.com/DevCloudFE/matechat-react/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=DevCloudFE/matechat-react" />
@@ -173,7 +123,16 @@ MateChat 是一个社区驱动的开源项目，我们欢迎任何贡献形式�
 
 ---
 
-# 📄 License
-[MIT License](./LICENSE) © 2025 MateChat Team
+## 联系我们
+
+|                                              MateChat React 技术交流群                                               |                                         SOA 技术交流群                                         |
+| :------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
+| [<img alt="MateChat React Chat Group" src="./assets/matechat-react-qq-group.jpg" />](https://qm.qq.com/q/aMLehEXzBm) | [<img alt="SOA Chat Group" src="./assets/soa-qq-group.jpg" />](https://qm.qq.com/q/lOocKriX74) |
+
+---
+
+## License
+
+该项目已获得 [MIT 许可](./LICENSE).
 
 
