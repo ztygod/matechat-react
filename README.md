@@ -76,7 +76,7 @@ export default function BubbleDemo() {
 ## Development
 
 ```bash
-git clone https://github.com/matechat/matechat-react.git
+git clone git@github.com:DevCloudFE/matechat-react.git
 cd matechat-react
 pnpm install
 pnpm dev
