@@ -4,7 +4,7 @@
 
 <div align="center">
 
-MateChat React 是 [MateChat](https://gitcode.com/DevCloudFE/MateChat) 的 React 版本，
+MateChat React 是 [MateChat](https://github.com/DevCloudFE/MateChat) 的 React 版本，
 它是一个基于华为 DevUI 设计的前端 AI 场景解决方案 UI 库。
 
 
@@ -24,8 +24,7 @@ MateChat React 是 [MateChat](https://gitcode.com/DevCloudFE/MateChat) 的 React
 
 ## 介绍
 
-**MateChat React** 是一个专为 AI 场景打造的 React 组件库，适用于聊天助手、提示工程工具、Agent 框架等场景。  
-这是 [MateChat Vue](https://github.com/matechat/matechat-vue) 的 React 版本，保持一致的功能与风格。
+**MateChat React** 是一个专为 AI 场景打造的 React 组件库，适用于聊天助手、提示工程工具、Agent 框架等场景。  这是 [MateChat](https://github.com/DevCloudFE/MateChat) 的 React 版本，保持一致的功能与风格。
 
 MateChat 基于 [华为 DevUI Design](https://devui.design/)，提供现代视觉语言、一致的用户体验以及良好的可扩展性。
 
@@ -121,12 +120,6 @@ pnpm build
 <a href="https://github.com/DevCloudFE/matechat-react/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=DevCloudFE/matechat-react" />
 </a>
-
----
-
-## License
-
-[MIT License](./LICENSE) © 2025 MateChat Team
 
 ---
 

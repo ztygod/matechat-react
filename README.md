@@ -4,7 +4,7 @@
 
 <div align="center">
 
-MateChat React is the React version of [MateChat](https://gitcode.com/DevCloudFE/MateChat), a front-end AI scenario solution UI library based on Huawei DevUI Design.
+MateChat React is the React version of [MateChat](https://github.com/DevCloudFE/MateChat), a front-end AI scenario solution UI library based on Huawei DevUI Design.
 
 
 [![npm Version](https://img.shields.io/npm/v/@matechat/react.svg)](https://www.npmjs.com/package/@matechat/react)
@@ -23,7 +23,7 @@ MateChat React is the React version of [MateChat](https://gitcode.com/DevCloudFE
 
 ## Introduction
 
-**MateChat React** is a React component library designed for AI-driven interfaces, such as chat assistants, prompt tools, agent frameworks, and more. It is the React version of [MateChat Vue](https://github.com/matechat/matechat-vue), offering consistent features and styles.
+**MateChat React** is a React component library designed for AI-driven interfaces, such as chat assistants, prompt tools, agent frameworks, and more. It is the React version of [MateChat](https://github.com/DevCloudFE/MateChat), offering consistent features and styles.
 
 MateChat is based on [Huawei DevUI Design](https://devui.design/), offering a modern visual language, consistent user experience, and excellent scalability.
 
@@ -56,15 +56,15 @@ export default function BubbleDemo() {
     <div className="bubble-chat">
       <div className="bubble-row left">
         <img src={avatar} alt="Bot" className="avatar" />
-        <Bubble text="您好，请问有什么可以帮您？" />
+        <Bubble text="Hello, how can I help you?" />
       </div>
       <div className="bubble-row right">
-        <Bubble text="我想了解一下产品功能！" />
+        <Bubble text="I want to know the product features!" />
         <img src={avatar} alt="User" className="avatar" />
       </div>
       <div className="bubble-row left">
         <img src={avatar} alt="Bot" className="avatar" />
-        <Bubble text="好的，请稍等..." isPending />
+        <Bubble text="OK, please wait..." isPending />
       </div>
     </div>
   );
@@ -122,12 +122,6 @@ We welcome all kinds of contributions:
 </a>
 
 ---
-
-## License
-
-[MIT License](./LICENSE) © 2025 MateChat Team
-
-
 
 ## Contact Us
 
