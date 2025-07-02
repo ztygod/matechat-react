@@ -1,27 +1,15 @@
-<!-- <div align="center"> -->
-  <!-- 亮色模式 logo -->
-  <!-- <a href="https://github.com/DevCloudFE#gh-light-mode-only">
-    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-light.svg" alt="DevCloudFE Logo Light" width="200" />
-  </a> -->
-
-  <!-- 暗色模式 logo -->
-  <!-- <a href="https://github.com/DevCloudFE#gh-dark-mode-only">
-    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-dark.svg" alt="DevCloudFE Logo Dark" width="200" />
-  </a>
-</div> -->
-
 <div align="center">
   <h1>MateChat React</h1>
 </div>
 
 <div align="center">
 
-An AI-oriented UI component library for prompt engineering and intelligent interactions, built with React and based on DevUI Design.
+MateChat React is the React version of [MateChat](https://gitcode.com/DevCloudFE/MateChat), a front-end AI scenario solution UI library based on Huawei DevUI Design.
 
 
 [![npm Version](https://img.shields.io/npm/v/@matechat/react.svg)](https://www.npmjs.com/package/@matechat/react)
 [![npm Downloads](https://img.shields.io/npm/dm/@matechat/react.svg)](https://www.npmjs.com/package/@matechat/react)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)!
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 </div>
 

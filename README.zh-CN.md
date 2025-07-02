@@ -1,23 +1,12 @@
-
-<!-- <div align="center"> -->
-  <!-- 亮色模式 logo -->
-  <!-- <a href="https://github.com/DevCloudFE#gh-light-mode-only">
-    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-light.svg" alt="DevCloudFE Logo Light" width="200" />
-  </a> -->
-
-  <!-- 暗色模式 logo -->
-  <!-- <a href="https://github.com/DevCloudFE#gh-dark-mode-only">
-    <img src="https://raw.githubusercontent.com/DevCloudFE/.github/main/profile/logo-dark.svg" alt="DevCloudFE Logo Dark" width="200" />
-  </a>
-</div> -->
-
 <div align="center">
   <h1>MateChat React</h1>
 </div>
 
 <div align="center">
 
-一个面向 AI 提示工程和智能交互场景的 React UI 组件库，基于 DevUI 设计。
+MateChat React 是 [MateChat](https://gitcode.com/DevCloudFE/MateChat) 的 React 版本，
+它是一个基于华为 DevUI 设计的前端 AI 场景解决方案 UI 库。
+
 
 [![npm Version](https://img.shields.io/npm/v/@matechat/react.svg)](https://www.npmjs.com/package/@matechat/react)
 [![npm Downloads](https://img.shields.io/npm/dm/@matechat/react.svg)](https://www.npmjs.com/package/@matechat/react)
