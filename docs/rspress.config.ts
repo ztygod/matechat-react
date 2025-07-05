@@ -1,6 +1,7 @@
 import * as path from "node:path";
 import { pluginPlayground } from "@rspress/plugin-playground";
 import { defineConfig } from "rspress/config";
+import GitCodeIcon from "./assets/gitcode.ts";
 
 export default defineConfig({
   plugins: [pluginPlayground()],
@@ -25,6 +26,13 @@ export default defineConfig({
   ],
   themeConfig: {
     socialLinks: [
+      {
+        icon: {
+          svg: GitCodeIcon,
+        },
+        mode: "link",
+        content: "https://gitcode.com/DevCloudFE/matechat-react",
+      },
       {
         icon: "github",
         mode: "link",
