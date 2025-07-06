@@ -49,6 +49,9 @@ export default defineConfig({
     },
   },
   globalStyles: path.resolve(__dirname, "./docs/tailwind.css"),
+  route: {
+    cleanUrls: true,
+  },
   mediumZoom: {
     selector: ".rspress-doc",
   },
