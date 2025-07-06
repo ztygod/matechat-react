@@ -5,13 +5,13 @@ hero:
   name: MateChat React
   text: AI scenario solution
   tagline: A frontend AI scenario solution UI library based on DevUI Design
-  # actions:
-  #   - theme: brand
-  #     text: Quick Start
-  #     link: /guide/start/introduction
-  #   - theme: alt
-  #     text: GitHub
-  #     link: https://github.com/DevCloudFE/matechat-react
+  actions:
+    # - theme: brand
+    #   text: Quick Start
+    #   link: /guide/start/introduction
+    - theme: alt
+      text: GitHub
+      link: https://github.com/DevCloudFE/matechat-react
   image:
     src: /matechat-icon.svg
 

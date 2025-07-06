@@ -1,5 +1,5 @@
 import { execSync, spawn } from "node:child_process";
-import fs, { type WatchEventType } from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 import { createSpinner } from "archons";
 import chalk from "chalk";
@@ -80,7 +80,7 @@ function watchAndServe() {
 
   let lastBuildTime = Date.now();
 
-  fs.watch(srcDir, { recursive: true }, (eventType, filename) => {
+  fs.watch(srcDir, { recursive: true }, (_eventType, filename) => {
     if (!filename || isIgnoredFile(filename)) return;
     if (Date.now() - lastBuildTime < 1000) return;
 

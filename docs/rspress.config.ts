@@ -1,4 +1,4 @@
-import * as path from "node:path";
+import path from "node:path";
 import { pluginPlayground } from "@rspress/plugin-playground";
 import { defineConfig } from "rspress/config";
 import GitCodeIcon from "./assets/gitcode.ts";
@@ -9,6 +9,10 @@ export default defineConfig({
   title: "MateChat React",
   icon: "/matechat-icon.svg",
   logo: "/matechat-icon.svg",
+  logoText: "MateChat React",
+  markdown: {
+    checkDeadLinks: true,
+  },
   lang: "en",
   locales: [
     {
@@ -39,6 +43,10 @@ export default defineConfig({
         content: "https://github.com/DevCloudFE/matechat-react",
       },
     ],
+    hideNavbar: "auto",
+    footer: {
+      message: "MIT Licensed | © 2025 DevCloudFE. All Rights Reserved.",
+    },
   },
   globalStyles: path.resolve(__dirname, "./docs/tailwind.css"),
   mediumZoom: {
