@@ -6,5 +6,9 @@
   "components": {
     "zh": "组件",
     "en": "Components"
+  },
+  "interaction": {
+    "zh": "交互",
+    "en": "Interaction"
   }
 }

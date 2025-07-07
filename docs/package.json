@@ -14,6 +14,7 @@
     "rspress": "^1.40.2"
   },
   "devDependencies": {
+    "@rspress/plugin-api-docgen": "^1.44.0",
     "@rspress/plugin-playground": "^1.44.0",
     "@rspress/plugin-preview": "^1.44.0",
     "@tailwindcss/postcss": "^4.1.11",
