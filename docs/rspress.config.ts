@@ -1,10 +1,18 @@
 import path from "node:path";
 import { pluginPlayground } from "@rspress/plugin-playground";
+import { pluginPreview } from "@rspress/plugin-preview";
 import { defineConfig } from "rspress/config";
 import GitCodeIcon from "./assets/gitcode.ts";
 
 export default defineConfig({
-  plugins: [pluginPlayground()],
+  plugins: [
+    pluginPlayground({
+      defaultRenderMode: "pure",
+    }),
+    pluginPreview({
+      defaultRenderMode: "pure",
+    }),
+  ],
   root: path.join(__dirname, "docs"),
   title: "MateChat React",
   icon: "/matechat-icon.svg",

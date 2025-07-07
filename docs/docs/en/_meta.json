@@ -1,8 +1,8 @@
 [
   {
-    "text": "display",
-    "link": "/display/session/bubble",
-    "activeMatch": "/display/"
+    "text": "components",
+    "link": "/components",
+    "activeMatch": "^/components"
   },
   {
     "text": "Releases",

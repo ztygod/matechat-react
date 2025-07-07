@@ -1,8 +1,8 @@
 [
   {
-    "text": "display",
-    "link": "/zh/display/session/bubble",
-    "activeMatch": "/display/"
+    "text": "components",
+    "link": "/zh/components",
+    "activeMatch": "^/zh/components"
   },
   {
     "text": "版本",
