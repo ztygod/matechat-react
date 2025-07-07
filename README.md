@@ -74,22 +74,9 @@ export default function BubbleDemo() {
 
 ## Documentation
 
-function App() {
-  return (
-    <div>
-      <ChatPanel
-        messages={[
-          { role: 'user', content: 'Hello, AI!' },
-          { role: 'assistant', content: 'Hi there! How can I help you today?' }
-        ]}
-      />
-      <PromptEditor onSubmit={value => console.log('Prompt:', value)} />
-    </div>
-  );
-}
-```
+The documentation is still in progress, but you can feel free to create a new issue in [GitCode](https://gitcode.com/DevCloudFE/MateChat/issues) or [GitHub](https://github.com/DevCloudFE/MateChat/issues) to submit your questions or suggestions. This project is still under development, so the documentation is not complete yet, some features may change in the future.
 
----
+For more information, please track the progress in [#4](https://github.com/DevCloudFE/matechat-react/issues/4) and [#5](https://github.com/DevCloudFE/MateChat/issues/5).
 
 ## Star History
 
@@ -115,82 +102,10 @@ We welcome all kinds of contributions:
 
 ## Contact Us
 
-|                                              MateChat React Chat Group                                               |                                         SOA Chat Group                                          |
-| :------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
+|                                              MateChat React Chat Group                                               |                                         SOA Chat Group                                         |
+| :------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
 | [<img alt="MateChat React Chat Group" src="./assets/matechat-react-qq-group.jpg" />](https://qm.qq.com/q/aMLehEXzBm) | [<img alt="SOA Chat Group" src="./assets/soa-qq-group.jpg" />](https://qm.qq.com/q/lOocKriX74) |
 
-Explore more in our [API docs](https://matechat.dev/api)
+## License
 
----
-
-# 🛠 Development
-
-```bash
-git clone https://github.com/matechat/matechat-react.git
-cd matechat-react
-pnpm install
-pnpm dev
-```
-
-Start component development:
-
-```bash
-pnpm storybook
-```
-
-Build the library:
-
-```bash
-pnpm build
-```
-
----
-
-# 📖 Documentation
-
-To explore full tutorials and examples, visit:
-
-👉 [https://matechat.dev](https://matechat.dev)
-
----
-
-# 🌱 Ecosystem
-
-| Project             | Description                      |
-| ------------------- | -------------------------------- |
-| matechat-vue        | Vue version of MateChat          |
-| @matechat/react     | React implementation (this repo) |
-| matechat-core (WIP) | Core prompt & agent logic        |
-
----
-
-# 📈 Star History
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=DevCloudFE/matechat-react&type=Date)](https://www.star-history.com/#DevCloudFE/matechat-react&Date)
-
----
-
-# 🤝 Contribution
-
-We welcome all kinds of contributions:
-
-* File issues for bugs or features
-* Create pull requests
-* Help with documentation or translations
-
-Please read our [Contribution Guide](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) before you start.
-
-**Contributors:**
-
-<a href="https://github.com/DevCloudFE/matechat-react/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=DevCloudFE/matechat-react" />
-</a>
-
----
-
-# 📄 License
-
-[MIT License](./LICENSE) © 2025 MateChat Team
-
+This project is licensed under the [MIT License](./LICENSE).
