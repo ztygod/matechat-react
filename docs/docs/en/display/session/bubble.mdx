@@ -1,11 +1,11 @@
 import { Bubble } from '@matechat/react'
-import BubbleDemo from '../../../../components/Bubble/BubbleDemo-zh'
+import BubbleDemo from '../../../../components/Bubble/BubbleDemo-en'
 
-# Bubble 气泡
+# Bubble
 
-> 用于承载对话内容的气泡组件，支持 loading、透明背景、自定义加载动画等。
+> A bubble component used to carry conversation content, supporting loading, transparent background, custom loading animation, etc.
 
-## 示例效果
+## Example Effect
 
 <BubbleDemo />
 
@@ -19,15 +19,15 @@ export default function BubbleDemo() {
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2 justify-start">
           <img src={avatar} alt="Bot" className="w-8 h-8 rounded-full" />
-          <Bubble text="您好，请问有什么可以帮您？" />
+          <Bubble text="Hello, how can I help you?" />
         </div>
         <div className="flex items-center gap-2 justify-end">
-          <Bubble text="我想了解一下产品功能！" />
+          <Bubble text="I want to know the product features!" />
           <img src={avatar} alt="User" className="w-8 h-8 rounded-full" />
         </div>
         <div className="flex items-center gap-2 justify-start">
           <img src={avatar} alt="Bot" className="w-8 h-8 rounded-full" />
-          <Bubble text="好的，请稍等..." isPending />
+          <Bubble text="OK, please wait..." isPending />
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@ export default function BubbleDemo() {
 }
 ```
 
-## Bubble 组件参数演示
+## Bubble component parameter demonstration
 ```tsx
 import { Bubble } from '@matechat/react';
 
@@ -43,17 +43,17 @@ export default function BubbleVariantsDemo() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {/* 默认 */}
-      <Bubble text="默认 Bubble" />
+      <Bubble text="Default Bubble" />
 
       {/* 透明背景 */}
-      <Bubble text="透明 Bubble" background="transparent" />
+      <Bubble text="Transparent Bubble" background="transparent" />
 
       {/* Pending 状态 */}
-      <Bubble text="加载中..." isPending />
+      <Bubble text="loading..." isPending />
 
       {/* 自定义 pending */}
       <Bubble
-        text="加载中..."
+        text="loading..."
         isPending
         pending={<span style={{ color: 'red' }}>⏳ Loading...</span>}
       />
@@ -65,12 +65,12 @@ export default function BubbleVariantsDemo() {
 
 | 参数名       | 类型                                        | 默认值     | 描述                                                                  |
 | ------------ | ------------------------------------------- | ---------- | --------------------------------------------------------------------- |
-| `text`       | `string`                                   | `必填`  | 气泡中显示的文本，可包含 Markdown                                     |
-| `background` | `transparent` \| `solid`               | `solid`  | 背景样式                                                              |
-| `isPending`  | `boolean`                                  | `false`    | 是否显示加载动画                                                      |
-| `pending`    | `React.ReactNode`                          | `默认动画` | 自定义加载内容                                                        |
+| `text`       | `string`                                   | `Required`  | The text displayed in the bubble, which can contain Markdown                                    |
+| `background` | `transparent` \| `solid`               | `solid`  | Background Style                                                              |
+| `isPending`  | `boolean`                                  | `false`    | Whether to display loading animation                                                     |
+| `pending`    | `React.ReactNode`                          | `默认动画` | Custom loading content                                                       |
 
-> ✅ **提示**：还可接收原生 div props，如 `className`、`style` 等
+> ✅ **Tip**: You can also receive native div props, such as `className`, `style`, etc.
 
 
 

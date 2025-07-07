@@ -2,5 +2,9 @@
   "quickStart": {
     "zh": "快速开始",
     "en": "Quick Start"
-  }
+  },
+    "display": {
+      "zh": "组件演示",
+      "en": "Component Demonstration"
+    }
 }
