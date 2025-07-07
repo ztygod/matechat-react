@@ -1,12 +1,12 @@
-import { MessageSquarePlus, MessageSquareWarning } from "lucide-react";
+import { MessageSquarePlus } from "lucide-react";
 import { useState } from "react";
 import { BubbleList } from "../../dist/bubble";
 import { Button } from "../../dist/button";
 import {
   Prompt,
   PromptDescription,
-  PromptTitle,
   Prompts,
+  PromptTitle,
 } from "../../dist/prompt";
 import { Sender } from "../../dist/sender";
 import type { MessageParam } from "../../dist/utils";
@@ -42,7 +42,10 @@ export function Chat() {
   if (!backend) {
     throw new Error("Backend is not initialized");
   }
-  const { messages, input, setMessages } = useChat(backend, initialMessages);
+  const { messages, input, setMessages, isPending } = useChat(
+    backend,
+    initialMessages,
+  );
 
   const onClear = () => {
     setPrompt("");
@@ -56,6 +59,8 @@ export function Chat() {
           <BubbleList
             className="px-4 w-full max-w-full"
             messages={messages}
+            background="right-solid"
+            isPending={isPending}
             footer={
               <Button
                 onClick={onClear}
@@ -68,21 +73,15 @@ export function Chat() {
             }
           />
           {messages.length === 0 && (
-            <Prompts className="mx-10">
-              <Prompt size="md" className="max-w-xs">
-                <PromptTitle>
-                  <MessageSquareWarning />
-                  Understanding the Transformer Model
-                </PromptTitle>
+            <Prompts>
+              <Prompt>
+                <PromptTitle>Understanding the Transformer Model</PromptTitle>
                 <PromptDescription>
                   Give a detailed analysis of the Transformer model.
                 </PromptDescription>
               </Prompt>
-              <Prompt className="max-w-xs">
-                <PromptTitle>
-                  <MessageSquareWarning />
-                  Understanding the Attention Mechanism
-                </PromptTitle>
+              <Prompt size="xs">
+                <PromptTitle>Understanding the Attention Mechanism</PromptTitle>
                 <PromptDescription>
                   Explain the attention mechanism in neural networks.
                 </PromptDescription>

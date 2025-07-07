@@ -1,6 +1,6 @@
-import { type Emitter, createNanoEvents } from "nanoevents";
+import { createNanoEvents, type Emitter } from "nanoevents";
 import OpenAI, { type ClientOptions } from "openai";
-import type { Backend, EventTypes, Events, MessageParam } from "./types";
+import type { Backend, Events, EventTypes, MessageParam } from "./types";
 
 /**
  * Configuration options for the `OpenAIBackend` class.

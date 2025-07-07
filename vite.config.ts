@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     lib: {
       name: "index",
-      entry: "./src/index.ts",
+      entry: ["./src/index.ts", "./src/utils/index.ts"],
       formats: ["es"],
     },
     rollupOptions: {
@@ -35,6 +35,14 @@ export default defineConfig({
               idx + "node_modules/".length,
             );
             return path.join("modules", relativePath);
+          }
+          // Rolldown cannot handle non-posix paths, so we handle manually
+          if (info.facadeModuleId?.includes("src")) {
+            const idx = info.facadeModuleId.lastIndexOf("src");
+            const relativeDir = path.dirname(
+              info.facadeModuleId.slice(idx + "src/".length),
+            );
+            return path.join(relativeDir, `${info.name}.js`);
           }
           return "[name].js";
         },
