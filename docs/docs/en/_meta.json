@@ -1,21 +1,11 @@
 [
   {
-    "text": "guide",
-    "link": "/guide/",
-    "activeMatch": "/guide/"
-  },
-  {
-    "text": "Hello world",
-    "link": "/hello/",
-    "activeMatch": "/hello/"
-  },
-  {
-    "text": "组件演示",
-    "link": "/display/",
-    "activeMatch": "/display/"
-  },
-  {
-    "text": "API",
-    "link": "https://rspress.dev/api/index.html"
+    "text": "Releases",
+    "items": [
+      {
+        "text": "Release Notes",
+        "link": "https://github.com/DevCloudFE/matechat-react/releases"
+      }
+    ]
   }
 ]

@@ -1,66 +1,6 @@
 {
-  "gettingStarted": {
-    "zh": "开始",
-    "en": "Getting Started"
-  },
-  "features": {
-    "zh": "特性",
-    "en": "Features"
-  },
-  "defaultTheme": {
-    "zh": "默认主题",
-    "en": "Default Theme"
-  },
-  "advanced": {
-    "zh": "高级能力",
-    "en": "Advanced"
-  },
-  "apiOverview": {
-    "zh": "API 概览",
-    "en": "API Overview"
-  },
-  "config": {
-    "zh": "配置",
-    "en": "Config"
-  },
-  "clientApi": {
-    "zh": "Client API",
-    "en": "Client API"
-  },
-  "commands": {
-    "zh": "命令",
-    "en": "Commands"
-  },
-  "pluginSystem": {
-    "zh": "插件机制",
-    "en": "Plugin System"
-  },
-  "pluginList": {
-    "zh": "官方插件",
-    "en": "Official Plugins"
-  },
-  "communityPlugins": {
-    "zh": "社区插件",
-    "en": "Community Plugins"
-  },
-  "general": {
-    "zh": "总览",
-    "en": "General"
-  },
-  "layout": {
-    "zh": "布局",
-    "en": "Layout"
-  },
-  "session": {
-    "zh": "对话",
-    "en": "Session"
-  },
-  "input": {
-    "zh": "输入",
-    "en": "Input"
-  },
-  "interaction": {
-    "zh": "交互",
-    "en": "Interaction"
+  "quickStart": {
+    "zh": "快速开始",
+    "en": "Quick Start"
   }
 }

@@ -1,50 +1,58 @@
-import * as path from 'node:path';
-import { defineConfig } from 'rspress/config';
-import { pluginPlayground } from '@rspress/plugin-playground';
+import path from "node:path";
+import { pluginPlayground } from "@rspress/plugin-playground";
+import { defineConfig } from "rspress/config";
+import GitCodeIcon from "./assets/gitcode.ts";
 
 export default defineConfig({
-  plugins: [
-    pluginPlayground()
-  ],
-  root: path.join(__dirname, 'docs'),
-  title: 'MetaChat React',
-  icon: '/rspress-icon.png',
-  logo: {
-    light: '/rspress-light-logo.png',
-    dark: '/rspress-dark-logo.png',
+  plugins: [pluginPlayground()],
+  root: path.join(__dirname, "docs"),
+  title: "MateChat React",
+  icon: "/matechat-icon.svg",
+  logo: "/matechat-icon.svg",
+  logoText: "MateChat React",
+  markdown: {
+    checkDeadLinks: true,
   },
-  lang: 'en',
+  lang: "en",
   locales: [
     {
-      lang: 'en',
-      // 导航栏切换语言的标签
-      label: 'English',
-      title: 'Rspress',
-      description: 'Static Site Generator',
+      lang: "en",
+      label: "English",
+      title: "MateChat React",
+      description: "Frontend AI scenario solution based on DevUI Design",
     },
     {
-      lang: 'zh',
-      label: '简体中文',
-      title: 'Rspress',
-      description: '静态网站生成器',
+      lang: "zh",
+      label: "简体中文",
+      title: "MateChat React",
+      description: "基于 DevUI 设计的前端 AI 解决方案",
     },
   ],
   themeConfig: {
     socialLinks: [
       {
-        icon: 'github',
-        mode: 'link',
-        content: 'https://github.com/web-infra-dev/rspress',
+        icon: {
+          svg: GitCodeIcon,
+        },
+        mode: "link",
+        content: "https://gitcode.com/DevCloudFE/matechat-react",
+      },
+      {
+        icon: "github",
+        mode: "link",
+        content: "https://github.com/DevCloudFE/matechat-react",
       },
     ],
-  },
-  builderConfig: {
-    resolve: {
-      alias: process.env.LOCAL ? {
-        '@matechat/react': path.resolve(__dirname, './src'),
-      } : {},
+    hideNavbar: "auto",
+    footer: {
+      message: "MIT Licensed | © 2025 DevCloudFE. All Rights Reserved.",
     },
   },
-  // 引入全局样式
-  globalStyles: path.resolve(__dirname, './docs/style.css'),
+  globalStyles: path.resolve(__dirname, "./docs/tailwind.css"),
+  route: {
+    cleanUrls: true,
+  },
+  mediumZoom: {
+    selector: ".rspress-doc",
+  },
 });

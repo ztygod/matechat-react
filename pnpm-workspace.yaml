@@ -1,7 +1,10 @@
+packages:
+  - docs
 onlyBuiltDependencies:
-  - "@biomejs/biome"
-  - "@swc/core"
-  - "@tailwindcss/oxide"
+  - '@biomejs/biome'
+  - '@swc/core'
+  - '@tailwindcss/oxide'
+  - core-js
   - esbuild
   - unrs-resolver
 

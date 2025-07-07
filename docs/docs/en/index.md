@@ -2,42 +2,41 @@
 pageType: home
 
 hero:
-  name: MateChat-React
-  text: AI Conversation UI for Frontend
-  tagline: A flexible, customizable UI component library for building AI interaction scenarios in React.
+  name: MateChat React
+  text: AI scenario solution
+  tagline: A frontend AI scenario solution UI library based on DevUI Design
   actions:
-    - theme: brand
-      text: Quick Start
-      link: /guide/
+    # - theme: brand
+    #   text: Quick Start
+    #   link: /guide/start/introduction
     - theme: alt
       text: GitHub
-      link: https://github.com/ztygod/matechat-react
+      link: https://github.com/DevCloudFE/matechat-react
   image:
-    src: /rspress-icon.png
-    alt: MateChat Logo
+    src: /matechat-icon.svg
 
 features:
-  - title: Rich AI conversation components
-    details: Provides modular components for building chat UIs, including message bubbles, avatars, toolbars, inputs, and more — all highly customizable.
+  - title: Rich AI Conversation Components
+    details: Provides modular components required for building chat UIs, such as bubbles, avatars, lists, input boxes, etc., all supporting property settings.
     icon: 💬
 
-  - title: Designed for AI scenarios
-    details: Supports multi-turn dialogs, message streaming display, and role-based rendering, making it ideal for AI assistants, bots, and agents.
+  - title: Optimized for AI Scenarios
+    details: Supports multi - turn conversations and streaming message display, suitable for scenarios such as AI assistants, intelligent robots, and Agents.
     icon: 🤖
 
-  - title: React port of MateChat Vue
-    details: Faithfully ports the MateChat Vue library to React with idiomatic JSX and full TypeScript support, ensuring consistency across ecosystems.
+  - title: React Port of MateChat Vue
+    details: A complete port of the MateChat library, written in idiomatic TSX and TypeScript to ensure a consistent experience across different technology stacks.
     icon: 🔁
 
-  - title: Lightweight and themeable
-    details: Built with flexibility in mind. Easily theme components or integrate into any design system without unnecessary overhead.
+  - title: Lightweight, Flexible, and Theme - Customizable
+    details: Natively supports theme extension and can be easily integrated into any design system without additional overhead.
     icon: 🎨
 
-  - title: Plug-and-play message rendering
-    details: Render various message types — text, code, images, system notifications — out of the box with clean and structured component APIs.
+  - title: Ready - to - Use Message Rendering Capability
+    details: Built - in support for rendering various message types such as text, code, and system prompts with a clear structure.
     icon: 🧩
 
-  - title: Ready for production
-    details: Tree-shakable, SSR-friendly, and well-tested. Easily integrates with your React apps, whether it's Next.js, Vite, or CRA.
+  - title: Production - Ready
+    details: Well - tested and can be seamlessly integrated into mainstream React applications such as Next.js and Vite.
     icon: 🚀
 ---
