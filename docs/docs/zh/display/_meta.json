@@ -1,7 +1,7 @@
 [
-    {
-      "type": "dir",
-      "name": "session",
-      "label": "session"
-    }
-  ]
+  {
+    "type": "dir",
+    "name": "session",
+    "label": "session"
+  }
+]
