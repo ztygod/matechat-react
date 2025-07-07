@@ -1,10 +1,21 @@
 import path from "node:path";
-import { pluginPlayground } from "@rspress/plugin-playground";
+import { pluginApiDocgen } from "@rspress/plugin-api-docgen";
+import { pluginPreview } from "@rspress/plugin-preview";
 import { defineConfig } from "rspress/config";
 import GitCodeIcon from "./assets/gitcode.ts";
 
 export default defineConfig({
-  plugins: [pluginPlayground()],
+  plugins: [
+    pluginApiDocgen({
+      entries: {
+        bubble: path.resolve(__dirname, "../src/bubble.tsx"),
+      },
+      apiParseTool: "react-docgen-typescript",
+    }),
+    pluginPreview({
+      defaultRenderMode: "pure",
+    }),
+  ],
   root: path.join(__dirname, "docs"),
   title: "MateChat React",
   icon: "/matechat-icon.svg",

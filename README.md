@@ -102,8 +102,8 @@ We welcome all kinds of contributions:
 
 ## Contact Us
 
-|                                              MateChat React Chat Group                                               |                                         SOA Chat Group                                          |
-| :------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
+|                                              MateChat React Chat Group                                               |                                         SOA Chat Group                                         |
+| :------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
 | [<img alt="MateChat React Chat Group" src="./assets/matechat-react-qq-group.jpg" />](https://qm.qq.com/q/aMLehEXzBm) | [<img alt="SOA Chat Group" src="./assets/soa-qq-group.jpg" />](https://qm.qq.com/q/lOocKriX74) |
 
 ## License
