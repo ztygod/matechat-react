@@ -3,8 +3,12 @@
     "zh": "快速开始",
     "en": "Quick Start"
   },
-    "display": {
-      "zh": "组件演示",
-      "en": "Component Demonstration"
-    }
+  "display": {
+    "zh": "组件演示",
+    "en": "Component Demonstration"
+  },
+  "session": {
+    "zh": "会话",
+    "en": "Session"
+  }
 }
