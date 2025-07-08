@@ -109,7 +109,7 @@ importers:
   docs:
     dependencies:
       '@matechat/react':
-        specifier: link:..
+        specifier: workspace:*
         version: link:..
       rspress:
         specifier: ^1.40.2
